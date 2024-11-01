@@ -1,32 +1,27 @@
+import 'package:e_commerce/core/helper_functions/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  final GoRouter router = initializeRouter();
+  runApp(FruitHub(router: router));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FruitHub extends StatelessWidget {
+  const FruitHub({super.key, required this.router});
+
+  final GoRouter router;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Fruites Hub',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text('Hello, World!'),
+      routerConfig: router,
     );
   }
 }

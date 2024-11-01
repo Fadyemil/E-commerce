@@ -8,10 +8,10 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
-
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
+  go_router: ^14.3.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.1
@@ -36,7 +36,6 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
@@ -47,3 +46,8 @@ flutter_launcher_icons:
     image_path: "assets/images/app_icon.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
+
+flutter_assets:
+  assets_path: assets/images
+  output_path: lib/core/constants/
+  filename: images.dart
