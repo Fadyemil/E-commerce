@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/splash/presentation/views/widget/splash_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
@@ -5,14 +6,9 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text('Hello, World!'),
-      appBar: AppBar(
-        title: Text('Splash Screen'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
+    return const Scaffold(
+      body: SafeArea(
+        child: SplashViewBody(),
       ),
     );
   }
