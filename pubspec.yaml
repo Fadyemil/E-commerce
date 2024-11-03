@@ -11,6 +11,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.4.1
   flutter_svg: ^2.0.11
   go_router: ^14.3.0
 
@@ -26,7 +27,7 @@ flutter:
   assets:
     - assets/images/
     - assets/app_icon.png
-  
+
 flutter_assets:
   assets_path: assets/images
   output_path: lib/core/constants/
@@ -46,8 +47,6 @@ flutter_launcher_icons:
   image_path: "assets/app_icon.png"
   adaptive_icon_foreground: "assets/app_icon.png"
   adaptive_icon_background: "#ffffff"
-  
-  
   # example:
   # fonts:
   #   - family: Schyler
