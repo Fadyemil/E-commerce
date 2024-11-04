@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/images.dart';
 
+import 'package:intl/intl.dart';
+
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
@@ -19,6 +21,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     super.initState();
   }
 
+  final isArabic = Intl.getCurrentLocale() == 'ar';
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +30,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment:
+              isArabic ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
             SvgPicture.asset(Assets.assetsImagesPlant),
           ],
