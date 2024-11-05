@@ -33,12 +33,6 @@ flutter:
     - assets/images/
     - assets/app_icon.png
     - assets/fonts/
-
-flutter_assets:
-  assets_path: assets/images
-  output_path: lib/core/constants/
-  filename: images.dart
-
   # example:
   fonts:
     - family: 'Cairo'
@@ -50,6 +44,10 @@ flutter_assets:
           weight: 600
         - asset: assets/fonts/Cairo-Bold.ttf
           weight: 700
+flutter_assets:
+  assets_path: assets/images
+  output_path: lib/core/constants/
+  filename: images.dart
 
 flutter_launcher_icons:
   android: "launcher_icon"
