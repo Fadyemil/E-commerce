@@ -84,11 +84,11 @@ class AppTextStyles {
   );
 
   static final TextStyle bodyBasaBold16 = TextStyle(
-    fontFamily: 'Cairo',
-    fontWeight: FontWeight.w700,
-    fontSize: 16.sp,
-    height: 1.4.h,
-  );
+      fontFamily: 'Cairo',
+      fontWeight: FontWeight.w700,
+      fontSize: 16.sp,
+      height: 1.4.h,
+      color: Colors.white);
 
   static final TextStyle bodySmallBold13 = TextStyle(
     fontFamily: 'Cairo',
