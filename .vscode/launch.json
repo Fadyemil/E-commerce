@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Fruites Deve",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_deve.dart",
+      "args": ["--flavor", "deve", "--target", "lib/main_deve.dart" ]
+    },
+    {
+      "name": "Fruites Prod",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_prod.dart",
+      "args": ["--flavor", "prod", "--target", "lib/main_prod.dart" ]
+    }
+  ]
+}
