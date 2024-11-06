@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:e_commerce/core/constants/constanst.dart';
 import 'package:e_commerce/core/helper_functions/router/router_name.dart';
+import 'package:e_commerce/core/services/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +21,7 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
-    excuteNavigation();
+    _navigateAfterSplash();
     super.initState();
   }
 
@@ -45,12 +49,16 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     );
   }
 
-  Future excuteNavigation() {
-    return Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        context.goNamed(RouterName.onBoarding);
-      },
-    );
+  Future<void> _navigateAfterSplash() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    CacheHelper prefs = CacheHelper();
+    bool isBoarding = prefs.getData(key: kIsBoardingViewSeen) as bool? ?? false;
+
+    if (isBoarding) {
+      context.goNamed(RouterName.login);
+    } else {
+      context.goNamed(RouterName.onBoarding);
+    }
   }
 }

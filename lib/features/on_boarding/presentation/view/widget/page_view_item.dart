@@ -1,7 +1,11 @@
+import 'package:e_commerce/core/constants/constanst.dart';
+import 'package:e_commerce/core/helper_functions/router/router_name.dart';
+import 'package:e_commerce/core/services/cache_helper.dart';
 import 'package:e_commerce/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({
@@ -43,10 +47,17 @@ class PageViewItem extends StatelessWidget {
                 visible: visible,
                 child: Positioned(
                   right: 8.w,
-                  child: Text(
-                    'تخط',
-                    style: AppTextStyles.bodySmallBold13
-                        .copyWith(color: const Color(0xff949D9E)),
+                  child: InkWell(
+                    onTap: () async {
+                      await CacheHelper()
+                          .saveData(key: kIsBoardingViewSeen, value: true);
+                      context.goNamed(RouterName.login);
+                    },
+                    child: Text(
+                      'تخط',
+                      style: AppTextStyles.bodySmallBold13
+                          .copyWith(color: const Color(0xff949D9E)),
+                    ),
                   ),
                 ),
               ),
