@@ -31,6 +31,8 @@ assets
 .pub-cache/
 .pub/
 /build/
+.env.prod
+.env.dev
 
 # Symbolication related
 app.*.symbols

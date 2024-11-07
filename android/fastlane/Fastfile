@@ -1,0 +1,24 @@
+default_platform(:android)
+
+platform :android do
+  desc "Lane for Android Firebase App Distribution"
+  lane :firebase_distribution do
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor prod --target lib/main_prod.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+        # in Project settings firebase 
+        app: "1:886020143887:android:b04b0f707cf86d63891c7a",
+        # in cmd command firebase login:ci
+        firebase_cli_token: ENV['FIREBASE_CLI_TOKEN'],
+        # constants
+        android_artifact_type: "APK",
+        # in build => app => outputs => flutter-apk => app-production-release.apk 
+        android_artifact_path: "../build/app/outputs/flutter-apk/app-prod-release.apk",
+        # tester email 
+        testers: "fady46t45f@gmail.com",
+        # constants
+        release_notes: "Testing something with GitHub Actions, trying to push directly from master branch",
+  )
+  end
+end
+
