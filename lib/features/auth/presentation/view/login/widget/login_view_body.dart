@@ -77,14 +77,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               image: Assets.assetsImagesGoogleIcon,
               onPressed: () {},
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
             // Apple Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة أبل',
               image: Assets.assetsImagesApplIcon,
               onPressed: () {},
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
             // Facebook Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة جوجل',
