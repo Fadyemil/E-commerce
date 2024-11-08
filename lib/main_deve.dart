@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:e_commerce/core/helper_functions/router/router.dart';
 import 'package:e_commerce/core/services/cache_helper.dart';
+import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/main.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +16,9 @@ Future<void> main() async {
   await sharedPrefs.init();
   final GoRouter router = initializeRouter();
   await dotenv.load(fileName: Security.filename);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     DevicePreview(
       enabled: true,
