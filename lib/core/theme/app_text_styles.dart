@@ -62,7 +62,15 @@ class AppTextStyles {
   );
 
   static final TextStyle bodyBasaBold16 = TextStyle(
-      fontWeight: FontWeight.w700, fontSize: 16.sp, color: Colors.white);
+    fontWeight: FontWeight.w700,
+    fontSize: 16.sp,
+    color: Colors.white,
+  );
+  static final TextStyle bodyBasaSemiBold16 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 16.sp,
+    color: Colors.white,
+  );
 
   static final TextStyle bodySmallBold13 = TextStyle(
     fontWeight: FontWeight.w600,
@@ -86,6 +94,10 @@ class AppTextStyles {
 
   static final TextStyle bodySmallRegular13 = TextStyle(
     fontWeight: FontWeight.w400,
+    fontSize: 13.sp,
+  );
+  static final TextStyle bodySmallSemiBold13 = TextStyle(
+    fontWeight: FontWeight.w600,
     fontSize: 13.sp,
   );
 
