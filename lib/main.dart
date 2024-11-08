@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 
 import 'generated/l10n.dart';
 
-
 class FruitHub extends StatelessWidget {
   const FruitHub({super.key, required this.router});
 
@@ -29,6 +28,7 @@ class FruitHub extends StatelessWidget {
         title: 'Fruites Hub',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           fontFamily: 'Cairo',
