@@ -1,9 +1,11 @@
 import 'package:e_commerce/core/constants/images.dart';
+import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/dont_have_an_accont.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/login_from_field.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/or_divider.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/social_login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -35,7 +37,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             SocialLoginButton(
               title: 'تسجيل بواسطة جوجل',
               image: Assets.assetsImagesGoogleIcon,
-              onPressed: () {},
+              onPressed: () async {
+                await context.read<LoginCubit>().loginWithGoogle();
+              },
             ),
             SizedBox(height: 10.h),
             // Apple Sign-In Button
