@@ -19,6 +19,8 @@ class FirebaseAuthService {
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
             message: 'لقد تم استخدام هذا البريد الإلكتروني من قبل.');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException(message: 'تاكد من الاتصال بالانترنت');
       } else {
         throw CustomException(
             message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة أخرى.');

@@ -1,9 +1,14 @@
+import 'package:e_commerce/core/DI/dependency_injection.dart';
 import 'package:e_commerce/core/helper_functions/router/router_name.dart';
+import 'package:e_commerce/features/auth/presentation/manger/sign_up/sign_up_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/view/signup/sign_up_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../features/auth/domain/repo/auth_repo.dart';
 
 GoRouter createRouter(String initialLocation) {
   return GoRouter(
@@ -27,7 +32,12 @@ GoRouter createRouter(String initialLocation) {
       GoRoute(
         path: RouterName.signUP,
         name: RouterName.signUP,
-        builder: (context, state) => const SignUpView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SignUpCubit(
+            getIt<AuthRepo>(),
+          ),
+          child: const SignUpView(),
+        ),
       ),
     ],
   );
