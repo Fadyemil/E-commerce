@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/DI/dependency_injection.dart';
 import 'package:e_commerce/core/helper_functions/router/router_name.dart';
+import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/manger/sign_up/sign_up_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/view/signup/sign_up_view.dart';
@@ -27,7 +28,12 @@ GoRouter createRouter(String initialLocation) {
       GoRoute(
         path: RouterName.login,
         name: RouterName.login,
-        builder: (context, state) => const LoginView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => LoginCubit(
+            getIt<AuthRepo>(),
+          ),
+          child: const LoginView(),
+        ),
       ),
       GoRoute(
         path: RouterName.signUP,
