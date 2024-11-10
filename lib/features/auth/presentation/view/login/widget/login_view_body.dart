@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_commerce/core/constants/images.dart';
 import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/dont_have_an_accont.dart';
@@ -43,12 +45,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ),
             SizedBox(height: 10.h),
             // Apple Sign-In Button
-            SocialLoginButton(
-              title: 'تسجيل بواسطة أبل',
-              image: Assets.assetsImagesApplIcon,
-              onPressed: () {},
-            ),
-            SizedBox(height: 10.h),
+            Platform.isIOS
+                ? Column(
+                    children: [
+                      SocialLoginButton(
+                        title: 'تسجيل بواسطة أبل',
+                        image: Assets.assetsImagesApplIcon,
+                        onPressed: () {},
+                      ),
+                      SizedBox(height: 10.h),
+                    ],
+                  )
+                : SizedBox(),
             // Facebook Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة فيسبوك',
