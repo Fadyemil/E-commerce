@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -59,4 +56,15 @@ class DefaultFirebaseOptions {
     projectId: 'e-commerce-6b390',
     storageBucket: 'e-commerce-6b390.firebasestorage.app',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDwkKy_hGJ_FtznDAFGdAbA3DRyXk7Y-LE',
+    appId: '1:886020143887:web:927ba4e3d72a8b9a891c7a',
+    messagingSenderId: '886020143887',
+    projectId: 'e-commerce-6b390',
+    authDomain: 'e-commerce-6b390.firebaseapp.com',
+    storageBucket: 'e-commerce-6b390.firebasestorage.app',
+    measurementId: 'G-NCP33806B3',
+  );
+
 }
