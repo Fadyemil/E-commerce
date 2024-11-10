@@ -60,12 +60,12 @@ android {
     productFlavors {
         deve {
             dimension "default"
-            resValue "string", "app_name", "Fruites deve"
+            resValue "string", "app_name_flavor", "Fruites deve"
             applicationIdSuffix ".deve"
         }
         prod {
             dimension "default"
-            resValue "string", "app_name", "Fruites prod"
+            resValue "string", "app_name_flavor", "Fruites prod"
             applicationIdSuffix ".prod"
         }
     }
@@ -73,4 +73,8 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+     implementation 'com.facebook.android:facebook-login:latest.release'
 }
