@@ -104,4 +104,14 @@ class FirebaseAuthService {
           message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة أخرى.');
     }
   }
+
+  //~ delete user
+  Future<void> deleteUser() async {
+    try {
+      await FirebaseAuth.instance.currentUser!.delete();
+    } catch (e) {
+      log('Exception in deleteUser $e');
+      throw CustomException(message: 'لقد حدث خطأ ما. الرجاء المحاولة مرة أخرى.');
+    }
+  }
 }

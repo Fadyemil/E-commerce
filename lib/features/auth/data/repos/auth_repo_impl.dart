@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -9,6 +10,7 @@ import 'package:e_commerce/core/utils/endpoind.dart';
 import 'package:e_commerce/features/auth/data/model/user_model.dart';
 import 'package:e_commerce/features/auth/domain/entites/user_entity.dart';
 import 'package:e_commerce/features/auth/domain/repo/auth_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
@@ -19,22 +21,30 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<Either<Faliure, UserEntity>> createUserwithEmailandPassword(
       String email, String password, String name) async {
+    User? user;
     try {
-      var user = await firebaseAuthService.createUserWithEmailAndPassword(
+      user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      var userEntity = UserModel.fromFirebaseUser(user,password: password).copyWith(
+      var userEntity =
+          UserModel.fromFirebaseUser(user, password: password).copyWith(
         name: name,
         uId: name + " " + user.uid,
       );
       await addUserData(user: userEntity);
 
-      return Right(UserModel.fromFirebaseUser(user,password: password));
+      return Right(UserModel.fromFirebaseUser(user, password: password));
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       return Left(ServerFaliure(e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       log('Exception in CreateUserwithEmailandPassword $e');
       return Left(ServerFaliure('An error occurred .Please try again.'));
     }
