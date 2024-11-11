@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
 
-class FirestoreService  {
-    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+class FirestoreService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   //~ Add a new document
   Future<void> addDocument({
@@ -22,6 +22,39 @@ class FirestoreService  {
     } catch (e) {
       log('Exception in addDocument: $e');
       throw CustomException(message: 'حدث خطأ أثناء إضافة البيانات.');
+    }
+  }
+
+  //~ Get a single document by ID
+  Future<Map<String, dynamic>?> getDocumentById({
+    required String collectionPath,
+    required String documentId,
+  }) async {
+    try {
+      final docSnapshot =
+          await _firestore.collection(collectionPath).doc(documentId).get();
+      if (docSnapshot.exists) {
+        return docSnapshot.data() as Map<String, dynamic>;
+      }
+      return null;
+    } catch (e) {
+      log('Exception in getDocumentById: $e');
+      throw CustomException(message: 'حدث خطأ أثناء جلب البيانات.');
+    }
+  }
+
+  //~ Get all documents from a collection
+  Future<List<Map<String, dynamic>>> getAllDocuments({
+    required String collectionPath,
+  }) async {
+    try {
+      final querySnapshot = await _firestore.collection(collectionPath).get();
+      return querySnapshot.docs
+          .map((doc) => {'id': doc.id, ...doc.data() as Map<String, dynamic>})
+          .toList();
+    } catch (e) {
+      log('Exception in getAllDocuments: $e');
+      throw CustomException(message: 'حدث خطأ أثناء جلب البيانات.');
     }
   }
 }
