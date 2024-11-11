@@ -87,4 +87,10 @@ class FirestoreService {
     }
   }
 
+  //~ Check if a document exists
+  Future<bool> checkIfDataExists(
+      {required String path, required String docuementId}) async {
+    var data = await _firestore.collection(path).doc(docuementId).get();
+    return data.exists;
+  }
 }

@@ -93,7 +93,16 @@ class AuthRepoImpl extends AuthRepo {
       var userEntity = UserModel.fromFirebaseUser(user).copyWith(
         uId: user.displayName! + " " + user.uid,
       );
-      await addUserData(user: userEntity);
+
+      var isUserExist = await firestoreService.checkIfDataExists(
+          path: EndPoint.isUerExists,
+          docuementId: user.displayName! + " " + user.uid);
+
+      if (isUserExist) {
+        await getUserData(uId: user.displayName! + " " + user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
 
       return Right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
@@ -115,7 +124,15 @@ class AuthRepoImpl extends AuthRepo {
       var userEntity = UserModel.fromFirebaseUser(user).copyWith(
         uId: user.displayName! + " " + user.uid,
       );
-      await addUserData(user: userEntity);
+      var isUserExist = await firestoreService.checkIfDataExists(
+          path: EndPoint.isUerExists,
+          docuementId: user.displayName! + " " + user.uid);
+
+      if (isUserExist) {
+        await getUserData(uId: user.displayName! + " " + user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
 
       return Right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
