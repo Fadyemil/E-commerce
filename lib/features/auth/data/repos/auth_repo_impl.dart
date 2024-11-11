@@ -23,26 +23,41 @@ class AuthRepoImpl extends AuthRepo {
       String email, String password, String name) async {
     User? user;
     try {
+      // Attempt to create the user
       user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
+      await user.updateDisplayName(name);
+      await Future.delayed(const Duration(milliseconds: 500));
+      await FirebaseAuth.instance.currentUser?.reload();
+      User? updatedUser = FirebaseAuth.instance.currentUser;
+
+      // Log the updated display name
+      log("*****************************${updatedUser!.displayName ?? "No display name"}**************");
+
+      // If displayName is null, handle it
+      if (updatedUser.displayName == null || updatedUser.displayName!.isEmpty) {
+        throw CustomException(message: 'Display name update failed.');
+      }
       var userEntity =
-          UserModel.fromFirebaseUser(user, password: password).copyWith(
-        name: name,
-        uId: name + " " + user.uid,
+          UserModel.fromFirebaseUser(updatedUser, password: password).copyWith(
+        name: updatedUser.displayName,
+        uId: "${updatedUser.displayName!} ${updatedUser.uid}",
       );
       await addUserData(user: userEntity);
 
-      return Right(UserModel.fromFirebaseUser(user, password: password));
+      return Right(userEntity);
     } on CustomException catch (e) {
-      await deleteUser(user);
+      // Safely delete user only if user is not null
+      if (user != null) await deleteUser(user);
       return Left(ServerFaliure(e.message));
     } catch (e) {
-      await deleteUser(user);
+      // Catch all other exceptions
+      if (user != null) await deleteUser(user);
       log('Exception in CreateUserwithEmailandPassword $e');
-      return Left(ServerFaliure('An error occurred .Please try again.'));
+      return Left(ServerFaliure('An error occurred. Please try again.'));
     }
   }
 
@@ -60,7 +75,13 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(user));
+      log("***************************${user.displayName ?? "No display name"}*******************************************");
+
+      String uId = "${user.displayName} ${user.uid}";
+      log("Constructed uId: $uId");
+      var userEntity = await getUserData(uId: uId);
+
+      return Right(userEntity);
     } on CustomException catch (e) {
       return Left(ServerFaliure(e.message));
     } catch (e) {
@@ -124,6 +145,18 @@ class AuthRepoImpl extends AuthRepo {
     } catch (e) {
       log('Exception in AuthRepoImpl.addData $e');
       return Left(ServerFaliure('حدث خطأ ما. الرجاء المحاولة مرة أخرى.'));
+    }
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uId}) async {
+    try {
+      var user = await firestoreService.getDocumentById(
+          collectionPath: EndPoint.getUserData, documentId: uId);
+      return UserModel.fromJson(user!);
+    } catch (e) {
+      log('Exception in AuthRepoImpl.addDataLocal $e');
+      throw ServerFaliure('حدث خطأ ما. الرجاء المحاولة مرة أخرى.');
     }
   }
 }
