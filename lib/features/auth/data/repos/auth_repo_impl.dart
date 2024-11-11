@@ -23,7 +23,6 @@ class AuthRepoImpl extends AuthRepo {
       String email, String password, String name) async {
     User? user;
     try {
-      // Attempt to create the user
       user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -34,10 +33,8 @@ class AuthRepoImpl extends AuthRepo {
       await FirebaseAuth.instance.currentUser?.reload();
       User? updatedUser = FirebaseAuth.instance.currentUser;
 
-      // Log the updated display name
       log("*****************************${updatedUser!.displayName ?? "No display name"}**************");
 
-      // If displayName is null, handle it
       if (updatedUser.displayName == null || updatedUser.displayName!.isEmpty) {
         throw CustomException(message: 'Display name update failed.');
       }
@@ -47,14 +44,11 @@ class AuthRepoImpl extends AuthRepo {
         uId: "${updatedUser.displayName!} ${updatedUser.uid}",
       );
       await addUserData(user: userEntity);
-
       return Right(userEntity);
     } on CustomException catch (e) {
-      // Safely delete user only if user is not null
       if (user != null) await deleteUser(user);
       return Left(ServerFaliure(e.message));
     } catch (e) {
-      // Catch all other exceptions
       if (user != null) await deleteUser(user);
       log('Exception in CreateUserwithEmailandPassword $e');
       return Left(ServerFaliure('An error occurred. Please try again.'));
