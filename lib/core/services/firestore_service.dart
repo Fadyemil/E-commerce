@@ -57,4 +57,34 @@ class FirestoreService {
       throw CustomException(message: 'حدث خطأ أثناء جلب البيانات.');
     }
   }
+
+  //~ Update a document
+  Future<void> updateDocument({
+    required String collectionPath,
+    required String documentId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await _firestore.collection(collectionPath).doc(documentId).update(data);
+      log('Document updated successfully');
+    } catch (e) {
+      log('Exception in updateDocument: $e');
+      throw CustomException(message: 'حدث خطأ أثناء تحديث البيانات.');
+    }
+  }
+
+  //~ Delete a document
+  Future<void> deleteDocument({
+    required String collectionPath,
+    required String documentId,
+  }) async {
+    try {
+      await _firestore.collection(collectionPath).doc(documentId).delete();
+      log('Document deleted successfully');
+    } catch (e) {
+      log('Exception in deleteDocument: $e');
+      throw CustomException(message: 'حدث خطأ أثناء حذف البيانات.');
+    }
+  }
+
 }
