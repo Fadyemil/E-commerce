@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform; // Ensure dart:io is only imported when targeting mobile platforms
 
 import 'package:e_commerce/core/constants/images.dart';
 import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:e_commerce/features/auth/presentation/view/login/widget/dont_hav
 import 'package:e_commerce/features/auth/presentation/view/login/widget/login_from_field.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/or_divider.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/social_login_button.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,18 +47,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ),
             SizedBox(height: 10.h),
             // Apple Sign-In Button
-            Platform.isIOS
-                ? Column(
-                    children: [
-                      SocialLoginButton(
-                        title: 'تسجيل بواسطة أبل',
-                        image: Assets.assetsImagesApplIcon,
-                        onPressed: () {},
-                      ),
-                      SizedBox(height: 10.h),
-                    ],
-                  )
-                : SizedBox(),
+            if (!kIsWeb && Platform.isIOS)
+              Column(
+                children: [
+                  SocialLoginButton(
+                    title: 'تسجيل بواسطة أبل',
+                    image: Assets.assetsImagesApplIcon,
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 10.h),
+                ],
+              )
+            else
+              SizedBox(),
             // Facebook Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة فيسبوك',
