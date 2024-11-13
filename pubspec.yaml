@@ -30,7 +30,9 @@ dependencies:
   flutter_svg_provider: ^1.0.7
   get_it: ^8.0.2
   go_router: ^14.3.0
+  google_nav_bar: ^5.0.7
   google_sign_in: ^6.2.2
+  line_icons: ^2.0.3
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.3.2
 
@@ -49,6 +51,15 @@ flutter:
     - assets/fonts/
     - .env.dev
     - .env.prod
+    - assets/images/vuesax/
+    - assets/images/vuesax/outline/home.svg
+    - assets/images/vuesax/bold/home.svg
+    - assets/images/vuesax/bold/products.svg
+    - assets/images/vuesax/bold/shopping-cart.svg
+    - assets/images/vuesax/bold/user.svg
+    - assets/images/vuesax/outline/products.svg
+    - assets/images/vuesax/outline/shopping-cart.svg
+    - assets/images/vuesax/outline/user.svg
   # example:
   fonts:
     - family: 'Cairo'
