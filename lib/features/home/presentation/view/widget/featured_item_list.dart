@@ -14,7 +14,8 @@ class FeaturedItemList extends StatelessWidget {
         return FeaturedItem();
       },
       options: CarouselOptions(
-        viewportFraction: 0.8,
+        aspectRatio: 342 / 165,
+        viewportFraction: 0.843,
         enableInfiniteScroll: false,
         enlargeCenterPage: true,
         autoPlay: true,
