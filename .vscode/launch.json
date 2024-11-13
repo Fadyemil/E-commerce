@@ -14,6 +14,13 @@
       "type": "dart",
       "program": "lib/main_prod.dart",
       "args": ["--flavor", "prod", "--target", "lib/main_prod.dart" ]
+    },
+    {
+      "name": "Fruites dashsBoard",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_dashs_board.dart",
+      "args": ["--flavor", "dashsBoard", "--target", "lib/main_dashs_board.dart" ]
     }
   ]
 }
