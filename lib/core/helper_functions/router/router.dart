@@ -5,6 +5,7 @@ import 'package:e_commerce/features/auth/presentation/manger/sign_up/sign_up_cub
 import 'package:e_commerce/features/auth/presentation/view/login/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/view/signup/sign_up_view.dart';
 import 'package:e_commerce/features/home/presentation/view/home_view.dart';
+import 'package:e_commerce/features/home/presentation/view/main_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +31,11 @@ GoRouter createRouter(String initialLocation) {
         path: RouterName.home,
         name: RouterName.home,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: RouterName.main_view,
+        name: RouterName.main_view,
+        builder: (context, state) => const MainView(),
       ),
       GoRoute(
         path: RouterName.login,
