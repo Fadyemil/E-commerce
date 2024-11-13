@@ -54,8 +54,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
     CacheHelper prefs = CacheHelper();
     bool isBoarding = prefs.getData(key: kIsBoardingViewSeen) as bool? ?? false;
+    bool isLogin = prefs.getData(key: kIsLigingViewSeen) as bool? ?? false;
 
-    if (isBoarding) {
+    if (isLogin) {
+      context.goNamed(RouterName.home);
+    } else if (isBoarding) {
       context.goNamed(RouterName.login);
     } else {
       context.goNamed(RouterName.onBoarding);

@@ -1,6 +1,8 @@
+import 'package:e_commerce/core/helper_functions/router/router_name.dart';
 import 'package:e_commerce/features/auth/presentation/view/signup/widget/sign_up_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../../core/helper_functions/build_error_message.dart';
@@ -21,6 +23,7 @@ class SignUpViewBlocConsumer extends StatelessWidget {
               content: Text('تم التسجيل بنجاح'),
             ),
           );
+          context.goNamed(RouterName.login);
         }
         if (state is SignUpError) {
           buildErrorBar(context, state.errorMessage);
