@@ -1,5 +1,5 @@
-import 'package:e_commerce/core/widget/fruit_item.dart';
 import 'package:e_commerce/features/home/presentation/view/widget/Sliver_app_bar_delegate.dart';
+import 'package:e_commerce/features/home/presentation/view/widget/best_selling_grid_view.dart';
 import 'package:e_commerce/features/home/presentation/view/widget/best_selling_header.dart';
 import 'package:e_commerce/features/home/presentation/view/widget/custom_search.dart';
 import 'package:e_commerce/features/home/presentation/view/widget/cutsom_home_app_bar.dart';
@@ -34,12 +34,9 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(
-            child: Column(
-          children: [
-            SizedBox(height: 16.h),
-            FruitItem(),
-          ],
-        ))
+          child: SizedBox(height: 16.h),
+        ),
+        BestSellingGridView(),
       ],
     );
   }
