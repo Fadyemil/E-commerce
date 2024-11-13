@@ -26,7 +26,7 @@ class LoginViewBlocConsumer extends StatelessWidget {
             ),
           );
           await CacheHelper().saveData(key: kIsLigingViewSeen, value: true);
-          context.goNamed(RouterName.home);
+          context.goNamed(RouterName.main_view);
         }
         if (state is LoginFailure) {
           buildErrorBar(context, state.message);
