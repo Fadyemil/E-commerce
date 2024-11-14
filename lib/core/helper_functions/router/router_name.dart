@@ -6,5 +6,4 @@ class RouterName {
   static const String home = "/home";
   static const String main_view = "/main_view";
   static const String bestSelling="/bestSelling";
-  static const String deshBoard = "/deshBoard";
 }

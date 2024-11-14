@@ -1,6 +1,5 @@
 import 'package:e_commerce/core/DI/dependency_injection.dart';
 import 'package:e_commerce/core/helper_functions/router/router_name.dart';
-import 'package:e_commerce/desh_board/presentation/view/desh_board_view.dart';
 import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/manger/sign_up/sign_up_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/login_view.dart';
@@ -43,11 +42,6 @@ GoRouter createRouter(String initialLocation) {
         path: RouterName.bestSelling,
         name: RouterName.bestSelling,
         builder: (context, state) => const BsetSellingView(),
-      ),
-      GoRoute(
-        path: RouterName.deshBoard,
-        name: RouterName.deshBoard,
-        builder: (context, state) => const DeshBoardView(),
       ),
       GoRoute(
         path: RouterName.login,
