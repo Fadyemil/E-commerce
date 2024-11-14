@@ -7,7 +7,7 @@ class DeshBoardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DeshBoardViewBody(),
+      body:  DeshBoardViewBody(),
     );
   }
 }
