@@ -7,9 +7,14 @@ GoRouter createRouterDB(String initialLocation) {
   return GoRouter(
     initialLocation: initialLocation,
     routes: [
-     GoRoute(
+      GoRoute(
         path: RouterNameDB.deshBoard,
         name: RouterNameDB.deshBoard,
+        builder: (context, state) => const DeshBoardView(),
+      ),
+      GoRoute(
+        path: RouterNameDB.addProduct,
+        name: RouterNameDB.addProduct,
         builder: (context, state) => const DeshBoardView(),
       ),
     ],
