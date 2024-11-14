@@ -36,4 +36,22 @@ class UserModel extends UserEntity {
       password: json['password'] as String? ?? '',
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'uId': uId,
+      'password': password,
+    };
+  }
+
+  factory UserModel.fromEntity(UserEntity user) {
+    return UserModel(
+      email: user.email,
+      name: user.name,
+      uId: user.uId,
+      password: user.password,
+    );
+  }
 }

@@ -11,12 +11,5 @@ class UserEntity {
     required this.password,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'email': email,
-      'uId': uId,
-      'password': password,
-    };
-  }
+  
 }

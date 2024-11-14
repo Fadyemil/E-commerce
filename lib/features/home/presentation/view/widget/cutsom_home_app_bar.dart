@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/constants/images.dart';
+import 'package:e_commerce/core/helper_functions/get_user.dart';
 import 'package:e_commerce/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class CutsomHomeAppBar extends StatelessWidget {
             .copyWith(color: const Color(0xff949D9E)),
       ),
       subtitle: Text(
-        'أحمد مصطفي',
+        getUser().name,
         style: AppTextStyles.bodyBasaBold16.copyWith(color: Colors.black),
       ),
       trailing: Container(

@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce/core/constants/constanst.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
 import 'package:e_commerce/core/errors/faliures.dart';
+import 'package:e_commerce/core/services/cache_helper.dart';
 import 'package:e_commerce/core/services/firebase_auth_service.dart';
 import 'package:e_commerce/core/services/firestore_service.dart';
 import 'package:e_commerce/core/utils/endpoind.dart';
@@ -74,6 +77,8 @@ class AuthRepoImpl extends AuthRepo {
       String uId = "${user.displayName} ${user.uid}";
       log("Constructed uId: $uId");
       var userEntity = await getUserData(uId: uId);
+      
+      await saveUserData(user: userEntity);
 
       return Right(userEntity);
     } on CustomException catch (e) {
@@ -150,7 +155,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       await firestoreService.addDocument(
           collectionPath: EndPoint.addUserData,
-          data: user.toMap(),
+          data: UserModel.fromEntity(user).toMap(),
           documentId: user.uId);
       return Right(user);
     } catch (e) {
@@ -169,5 +174,11 @@ class AuthRepoImpl extends AuthRepo {
       log('Exception in AuthRepoImpl.addDataLocal $e');
       throw ServerFaliure('حدث خطأ ما. الرجاء المحاولة مرة أخرى.');
     }
+  }
+
+  @override
+  Future saveUserData({required UserEntity user}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+     await CacheHelper().saveData(key: kUserData, value: jsonData);
   }
 }
