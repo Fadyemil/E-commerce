@@ -4,6 +4,7 @@ import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.d
 import 'package:e_commerce/features/auth/presentation/manger/sign_up/sign_up_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/view/signup/sign_up_view.dart';
+import 'package:e_commerce/features/best_selling_fruits/presentation/view/bset_selling_view.dart';
 import 'package:e_commerce/features/home/presentation/view/home_view.dart';
 import 'package:e_commerce/features/main/presentation/view/main_view.dart';
 import 'package:e_commerce/features/on_boarding/presentation/view/on_boarding_view.dart';
@@ -36,6 +37,11 @@ GoRouter createRouter(String initialLocation) {
         path: RouterName.main_view,
         name: RouterName.main_view,
         builder: (context, state) => const MainView(),
+      ),
+      GoRoute(
+        path: RouterName.bestSelling,
+        name: RouterName.bestSelling,
+        builder: (context, state) => const BsetSellingView(),
       ),
       GoRoute(
         path: RouterName.login,
