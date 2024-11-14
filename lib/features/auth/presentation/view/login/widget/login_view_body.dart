@@ -1,5 +1,5 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform;
 import 'package:e_commerce/core/constants/images.dart';
 import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/view/login/widget/dont_have_an_accont.dart';
@@ -45,18 +45,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ),
             SizedBox(height: 10.h),
             // Apple Sign-In Button
-            Platform.isIOS
-                ? Column(
-                    children: [
-                      SocialLoginButton(
-                        title: 'تسجيل بواسطة أبل',
-                        image: Assets.assetsImagesApplIcon,
-                        onPressed: () {},
-                      ),
-                      SizedBox(height: 10.h),
-                    ],
-                  )
-                : SizedBox(),
+            if (!kIsWeb && Platform.isIOS)
+              Column(
+                children: [
+                  SocialLoginButton(
+                    title: 'تسجيل بواسطة أبل',
+                    image: Assets.assetsImagesApplIcon,
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 10.h),
+                ],
+              )
+            else
+              SizedBox(),
             // Facebook Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة فيسبوك',
