@@ -1,3 +1,4 @@
+import 'package:e_commerce/desh_board/presentation/view/desh_board_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,14 +11,7 @@ class MainDashsBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Fruit Hub'),
-        ),
-        body: const Center(
-          child: Text('Main Dashs Board'),
-        ),
-      ),
+      home: DeshBoardView(),
     );
   }
 }
