@@ -33,10 +33,10 @@ dependencies:
   google_nav_bar: ^5.0.7
   google_sign_in: ^6.2.2
   image_picker: ^1.1.2
-  image_picker_web: ^4.0.0
   line_icons: ^2.0.3
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.3.2
+  skeletonizer: ^1.4.2
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.1
