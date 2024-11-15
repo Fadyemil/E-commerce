@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_commerce/core/widget/app_text_form_field.dart';
 import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/image_field.dart';
 import 'package:flutter/material.dart';
@@ -45,11 +47,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               maxlines: 5,
             ),
             SizedBox(height: 16.h),
-            ImageField()
+            ImageField(
+              onFileChanged: (File? value) {},
+            )
           ],
         ),
       ),
     );
   }
 }
-
