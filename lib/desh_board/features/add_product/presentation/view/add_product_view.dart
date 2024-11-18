@@ -1,4 +1,4 @@
-import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/add_product_view_body.dart';
+import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/add_products_view_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 
 class AddProductView extends StatelessWidget {
@@ -12,8 +12,9 @@ class AddProductView extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: AddProductViewBody(),
+        child: AddProductsViewBodyBlocConsumer(),
       ),
     );
   }
 }
+

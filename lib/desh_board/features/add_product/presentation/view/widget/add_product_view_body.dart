@@ -4,9 +4,11 @@ import 'package:e_commerce/core/theme/app_text_styles.dart';
 import 'package:e_commerce/core/widget/app_text_form_field.dart';
 import 'package:e_commerce/core/widget/cusstom_button.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
+import 'package:e_commerce/desh_board/features/add_product/presentation/manger/add_product/add_product_cubit.dart';
 import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/image_field.dart';
 import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/is_feature_check_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -135,6 +137,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                               image: image!,
                               isFeatured: isChecked,
                             );
+                            context.read<AddProductCubit>().addProduct(input);
                           }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
