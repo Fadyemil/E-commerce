@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/DI/dependency_injection.dart';
 import 'package:e_commerce/core/services/custom_bloc_server.dart';
 import 'package:e_commerce/desh_board/core/helper_functions/router/router_d_b.dart';
 import 'package:e_commerce/firebase_options.dart';
@@ -13,6 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setupGetit();
   runApp(MainDashsBoard(router: router));
 }
 

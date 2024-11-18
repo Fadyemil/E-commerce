@@ -22,9 +22,13 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> _formState = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool isChecked = false;
+  bool isOrganic = false;
 
   TextEditingController nameContoller = TextEditingController();
   TextEditingController priceContoller = TextEditingController();
+  TextEditingController expirationContoller = TextEditingController();
+  TextEditingController numCaloriesContoller = TextEditingController();
+  TextEditingController unitAmountContoller = TextEditingController();
   TextEditingController codeContoller = TextEditingController();
   TextEditingController desContoller = TextEditingController();
   File? image;
@@ -78,6 +82,37 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   ),
                   SizedBox(height: 16.h),
 
+                  // ~ expiration  field
+                  AppTextFormField(
+                    hintText: 'Expiration Months',
+                    validator: (value) =>
+                        value!.isEmpty ? 'EXpiration Price is required' : null,
+                    keyboardType: TextInputType.number,
+                    controller: expirationContoller,
+                  ),
+                  SizedBox(height: 16.h),
+
+                  // ~ number of calories  field
+                  AppTextFormField(
+                    hintText: 'number of calories',
+                    validator: (value) => value!.isEmpty
+                        ? 'number of calories Price is required'
+                        : null,
+                    keyboardType: TextInputType.number,
+                    controller: numCaloriesContoller,
+                  ),
+                  SizedBox(height: 16.h),
+
+                  // ~ unit Amount   field
+                  AppTextFormField(
+                    hintText: 'nuit Amount',
+                    validator: (value) =>
+                        value!.isEmpty ? 'nuit Amount  is required' : null,
+                    keyboardType: TextInputType.number,
+                    controller: unitAmountContoller,
+                  ),
+                  SizedBox(height: 16.h),
+
                   // ~ Product code field
                   AppTextFormField(
                     hintText: 'Product Code',
@@ -110,6 +145,17 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   ),
                   SizedBox(height: 16.h),
 
+                  // ~ Checkbox for marking is orgically
+                  IsFeatureCheckBox(
+                    isTermsAccepted: isOrganic,
+                    onChecked: (value) {
+                      setState(() {
+                        isOrganic = value;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 16.h),
+
                   // ~ Image selection field
                   ImageField(
                     onFileChanged: (File? value) {
@@ -136,6 +182,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                               code: codeContoller.text,
                               image: image!,
                               isFeatured: isChecked,
+                              isOrganic: isOrganic,
+                              expirationMonths:int.parse(expirationContoller.text),
+                              numberOfCalories: int.parse(numCaloriesContoller.text),
+                              unitAmount: int.parse(unitAmountContoller.text),
                             );
                             context.read<AddProductCubit>().addProduct(input);
                           }

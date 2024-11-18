@@ -10,6 +10,13 @@ class AddProductInputModel implements AddProductInputEntity {
   final File image;
   final bool isFeatured;
   String? imageUrl;
+  final int expirationMonths;
+  bool isOrganic = false;
+  final int numberOfCalories;
+  final int unitAmount;
+
+  final num avgRating;
+  final num ratingCount;
 
   AddProductInputModel({
     required this.name,
@@ -19,6 +26,12 @@ class AddProductInputModel implements AddProductInputEntity {
     required this.image,
     required this.isFeatured,
     this.imageUrl,
+    required this.expirationMonths,
+    this.isOrganic = false,
+    required this.numberOfCalories,
+    required this.unitAmount,
+    this.avgRating=0,
+    this.ratingCount=0,
   });
 
   factory AddProductInputModel.fromEntity(
@@ -31,6 +44,12 @@ class AddProductInputModel implements AddProductInputEntity {
       image: addProductInputEntity.image,
       isFeatured: addProductInputEntity.isFeatured,
       imageUrl: addProductInputEntity.imageUrl,
+      expirationMonths: addProductInputEntity.expirationMonths,
+      isOrganic: addProductInputEntity.isOrganic,
+      numberOfCalories: addProductInputEntity.numberOfCalories,
+      unitAmount: addProductInputEntity.unitAmount,
+      avgRating: addProductInputEntity.avgRating,
+      ratingCount: addProductInputEntity.ratingCount,
     );
   }
   toJson() {
@@ -40,7 +59,13 @@ class AddProductInputModel implements AddProductInputEntity {
       'description': description,
       'code': code,
       'image': imageUrl,
-      'isFeatured': isFeatured
+      'isFeatured': isFeatured,
+      'isOrganic': isOrganic,
+      'numberOfCalories': numberOfCalories,
+      'unitAmount': unitAmount,
+      'avgRating': avgRating,
+      'ratingCount': ratingCount,
+      'expirationMonths': expirationMonths,
     };
   }
 }
