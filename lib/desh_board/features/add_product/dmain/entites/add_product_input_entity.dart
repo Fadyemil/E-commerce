@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:e_commerce/desh_board/features/add_product/dmain/entites/review_entity.dart';
+
 class AddProductInputEntity {
   final String name;
   final num price;
@@ -16,6 +18,8 @@ class AddProductInputEntity {
   final num avgRating;
   final num ratingCount;
 
+  final List<ReviewEntity> reviews;
+
   AddProductInputEntity({
     required this.name,
     required this.price,
@@ -30,5 +34,6 @@ class AddProductInputEntity {
     this.isOrganic = false,
     this.ratingCount = 0,
     this.avgRating = 0,
+    required this.reviews,
   });
 }

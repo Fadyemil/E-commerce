@@ -186,6 +186,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                               expirationMonths:int.parse(expirationContoller.text),
                               numberOfCalories: int.parse(numCaloriesContoller.text),
                               unitAmount: int.parse(unitAmountContoller.text),
+                              reviews: [],
                             );
                             context.read<AddProductCubit>().addProduct(input);
                           }

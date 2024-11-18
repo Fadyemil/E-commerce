@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:e_commerce/desh_board/features/add_product/data/models/review_model.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
 
 class AddProductInputModel implements AddProductInputEntity {
@@ -17,6 +18,7 @@ class AddProductInputModel implements AddProductInputEntity {
 
   final num avgRating;
   final num ratingCount;
+  final List<ReviewModel> reviews;
 
   AddProductInputModel({
     required this.name,
@@ -30,8 +32,9 @@ class AddProductInputModel implements AddProductInputEntity {
     this.isOrganic = false,
     required this.numberOfCalories,
     required this.unitAmount,
-    this.avgRating=0,
-    this.ratingCount=0,
+    this.avgRating = 0,
+    this.ratingCount = 0,
+    required this.reviews,
   });
 
   factory AddProductInputModel.fromEntity(
@@ -50,6 +53,9 @@ class AddProductInputModel implements AddProductInputEntity {
       unitAmount: addProductInputEntity.unitAmount,
       avgRating: addProductInputEntity.avgRating,
       ratingCount: addProductInputEntity.ratingCount,
+      reviews: addProductInputEntity.reviews
+          .map((review) => ReviewModel.fromEntity(review))
+          .toList(),
     );
   }
   toJson() {
@@ -66,6 +72,7 @@ class AddProductInputModel implements AddProductInputEntity {
       'avgRating': avgRating,
       'ratingCount': ratingCount,
       'expirationMonths': expirationMonths,
+      'reviews': reviews.map((review) => review.toJson()).toList(),
     };
   }
 }
