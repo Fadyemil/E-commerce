@@ -114,7 +114,7 @@ class FirestoreService {
     }
   }
 
-   //~ Listen to a specific document changes
+  //~ Listen to a specific document changes
   Stream<Map<String, dynamic>?> listenToDocument({
     required String collectionPath,
     required String documentId,
@@ -156,7 +156,7 @@ class FirestoreService {
     }
   }
 
-    //~ Advanced Query (Filtering and Sorting)
+  //~ Advanced Query (Filtering and Sorting)
   Future<List<Map<String, dynamic>>> getDocumentsWithFilterAndSort({
     required String collectionPath,
     String? filterField,
@@ -169,7 +169,11 @@ class FirestoreService {
 
       // Apply filter if provided
       if (filterField != null && filterValue != null) {
-        query = query.where(filterField, isEqualTo: filterValue);
+        query = query.where(
+          filterField,
+          isEqualTo: filterValue,
+          isGreaterThan: filterValue,
+        );
       }
 
       // Apply sorting if provided

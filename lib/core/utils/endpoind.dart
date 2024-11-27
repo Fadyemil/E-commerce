@@ -4,4 +4,5 @@ class EndPoint {
   static const String isUerExists = 'user';
   static const String images = 'images';
   static const String addProduct = 'addProduct';
+  static const String getProducts = 'addProduct';
 }
