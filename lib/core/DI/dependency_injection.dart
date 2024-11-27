@@ -19,7 +19,7 @@ void setupGetit() {
   getIt.registerSingleton<FireStorageService>(FireStorageService());
 
   getIt.registerSingleton<ImageRepo>(ImageRepoImpl(
-    fireStorageService: getIt<FireStorageService>(),
+    // fireStorageService: getIt<FireStorageService>(),
   ));
   getIt.registerSingleton<ProductsRepo>(
     ProductsRepoImpl(firestoreService: getIt<FirestoreService>()),

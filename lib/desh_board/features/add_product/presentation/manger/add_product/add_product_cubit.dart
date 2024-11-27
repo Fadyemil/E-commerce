@@ -14,17 +14,27 @@ class AddProductCubit extends Cubit<AddProductState> {
 
   Future<void> addProduct(AddProductInputEntity addProductInputEntity) async {
     emit(AddProductLoading());
-    var result = await imageRepo.uploadImage(addProductInputEntity.image);
+    var result = await productsRepo.addProduct(addProductInputEntity);
     result.fold((f) {
       emit(AddProductFailure(errorMessage: f.toString()));
-    }, (url) async {
-      addProductInputEntity.imageUrl = url;
-      var result = await productsRepo.addProduct(addProductInputEntity);
-      result.fold((f) {
-        emit(AddProductFailure(errorMessage: f.toString()));
-      }, (product) {
-        emit(AddProductSuccess());
-      });
+    }, (product) {
+      emit(AddProductSuccess());
     });
   }
+
+  // Future<void> addProduct(AddProductInputEntity addProductInputEntity) async {
+  //   emit(AddProductLoading());
+  //   var result = await imageRepo.uploadImage(addProductInputEntity.image);
+  //   result.fold((f) {
+  //     emit(AddProductFailure(errorMessage: f.toString()));
+  //   }, (url) async {
+  //     addProductInputEntity.imageUrl = url;
+  //     var result = await productsRepo.addProduct(addProductInputEntity);
+  //     result.fold((f) {
+  //       emit(AddProductFailure(errorMessage: f.toString()));
+  //     }, (product) {
+  //       emit(AddProductSuccess());
+  //     });
+  //   });
+  // }
 }

@@ -7,6 +7,7 @@ import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_pro
 import 'package:e_commerce/desh_board/features/add_product/presentation/manger/add_product/add_product_cubit.dart';
 import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/image_field.dart';
 import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/is_feature_check_box.dart';
+import 'package:e_commerce/desh_board/features/add_product/presentation/view/widget/is_organic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -146,7 +147,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   SizedBox(height: 16.h),
 
                   // ~ Checkbox for marking is orgically
-                  IsFeatureCheckBox(
+                  IsOrganic(
                     isTermsAccepted: isOrganic,
                     onChecked: (value) {
                       setState(() {
@@ -171,31 +172,33 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       buttonText: 'Add Item',
                       textStyle: AppTextStyles.bodyBasaBold16,
                       onPressed: () {
-                        if (image != null) {
-                          if (_formState.currentState!.validate()) {
-                            _formState.currentState!.save();
-                            // ignore: unused_local_variable
-                            AddProductInputEntity input = AddProductInputEntity(
-                              name: nameContoller.text,
-                              price: num.parse(priceContoller.text),
-                              description: desContoller.text,
-                              code: codeContoller.text,
-                              image: image!,
-                              isFeatured: isChecked,
-                              isOrganic: isOrganic,
-                              expirationMonths:int.parse(expirationContoller.text),
-                              numberOfCalories: int.parse(numCaloriesContoller.text),
-                              unitAmount: int.parse(unitAmountContoller.text),
-                              reviews: [],
-                            );
-                            context.read<AddProductCubit>().addProduct(input);
-                          }
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Please select an image')),
+                        // if (image != null) {
+                        if (_formState.currentState!.validate()) {
+                          _formState.currentState!.save();
+                          // ignore: unused_local_variable
+                          AddProductInputEntity input = AddProductInputEntity(
+                            name: nameContoller.text,
+                            price: num.parse(priceContoller.text),
+                            description: desContoller.text,
+                            code: codeContoller.text,
+                            // image: image!,
+                            isFeatured: isChecked,
+                            isOrganic: isOrganic,
+                            expirationMonths:
+                                int.parse(expirationContoller.text),
+                            numberOfCalories:
+                                int.parse(numCaloriesContoller.text),
+                            unitAmount: int.parse(unitAmountContoller.text),
+                            reviews: [],
                           );
+                          context.read<AddProductCubit>().addProduct(input);
                         }
+                        // } else {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     const SnackBar(
+                        //         content: Text('Please select an image')),
+                        //   );
+                        // }
                       },
                     ),
                   ),
