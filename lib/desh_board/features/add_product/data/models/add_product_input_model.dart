@@ -1,4 +1,4 @@
-import 'dart:io';
+// import 'dart:io';
 
 import 'package:e_commerce/desh_board/features/add_product/data/models/review_model.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
@@ -8,9 +8,9 @@ class AddProductInputModel implements AddProductInputEntity {
   final num price;
   final String description;
   final String code;
-  final File image;
+  // final File image;
   final bool isFeatured;
-  String? imageUrl;
+  // String? imageUrl;
   final int expirationMonths;
   bool isOrganic = false;
   final int numberOfCalories;
@@ -25,9 +25,9 @@ class AddProductInputModel implements AddProductInputEntity {
     required this.price,
     required this.description,
     required this.code,
-    required this.image,
+    // required this.image,
     required this.isFeatured,
-    this.imageUrl,
+    // this.imageUrl,
     required this.expirationMonths,
     this.isOrganic = false,
     required this.numberOfCalories,
@@ -44,9 +44,7 @@ class AddProductInputModel implements AddProductInputEntity {
       price: addProductInputEntity.price,
       description: addProductInputEntity.description,
       code: addProductInputEntity.code,
-      image: addProductInputEntity.image,
       isFeatured: addProductInputEntity.isFeatured,
-      imageUrl: addProductInputEntity.imageUrl,
       expirationMonths: addProductInputEntity.expirationMonths,
       isOrganic: addProductInputEntity.isOrganic,
       numberOfCalories: addProductInputEntity.numberOfCalories,
@@ -64,7 +62,7 @@ class AddProductInputModel implements AddProductInputEntity {
       'price': price,
       'description': description,
       'code': code,
-      'image': imageUrl,
+      // 'image': imageUrl,
       'isFeatured': isFeatured,
       'isOrganic': isOrganic,
       'numberOfCalories': numberOfCalories,
