@@ -12,11 +12,11 @@ class ProductsRepoImpl extends ProductsRepo {
   ProductsRepoImpl({required this.firestoreService});
   @override
   Future<Either<Faliure, void>> addProduct(
-      AddProductInputEntity addProductInputEntity) async {
+      ProductEntity addProductInputEntity) async {
     try {
       await firestoreService.addDocument(
         collectionPath: EndPoint.addProduct,
-        data: AddProductInputModel.fromEntity(addProductInputEntity).toJson(),
+        data: ProductModel.fromEntity(addProductInputEntity).toJson(),
       );
       return Right(null);
     } catch (error) {

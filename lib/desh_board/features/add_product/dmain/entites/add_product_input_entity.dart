@@ -2,7 +2,7 @@
 
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/review_entity.dart';
 
-class AddProductInputEntity {
+class ProductEntity {
   final String name;
   final num price;
   final String description;
@@ -20,7 +20,7 @@ class AddProductInputEntity {
 
   final List<ReviewEntity> reviews;
 
-  AddProductInputEntity({
+  ProductEntity({
     required this.name,
     required this.price,
     required this.description,

@@ -24,22 +24,28 @@ class AddProductButton extends StatelessWidget {
         textStyle: AppTextStyles.bodyBasaBold16,
         onPressed: () {
           // if (image != null) {
-          if (context.read<AddProductCubit>().formState.currentState!.validate()) {
+          if (context
+              .read<AddProductCubit>()
+              .formState
+              .currentState!
+              .validate()) {
             context.read<AddProductCubit>().formState.currentState!.save();
             // ignore: unused_local_variable
-            AddProductInputEntity input = AddProductInputEntity(
+            ProductEntity input = ProductEntity(
               name: context.read<AddProductCubit>().nameContoller.text,
-              price: num.parse(context.read<AddProductCubit>().priceContoller.text),
+              price: num.parse(
+                  context.read<AddProductCubit>().priceContoller.text),
               description: context.read<AddProductCubit>().desContoller.text,
               code: context.read<AddProductCubit>().codeContoller.text,
               // image: image!,
               isFeatured: isChecked,
               isOrganic: isOrganic,
-              expirationMonths:
-                  int.parse(context.read<AddProductCubit>().expirationContoller.text),
-              numberOfCalories:
-                  int.parse(context.read<AddProductCubit>().numCaloriesContoller.text),
-              unitAmount: int.parse(context.read<AddProductCubit>().unitAmountContoller.text),
+              expirationMonths: int.parse(
+                  context.read<AddProductCubit>().expirationContoller.text),
+              numberOfCalories: int.parse(
+                  context.read<AddProductCubit>().numCaloriesContoller.text),
+              unitAmount: int.parse(
+                  context.read<AddProductCubit>().unitAmountContoller.text),
               reviews: [],
             );
             context.read<AddProductCubit>().addProduct(input);

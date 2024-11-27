@@ -3,7 +3,7 @@
 import 'package:e_commerce/desh_board/features/add_product/data/models/review_model.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
 
-class AddProductInputModel implements AddProductInputEntity {
+class ProductModel implements ProductEntity {
   final String name;
   final num price;
   final String description;
@@ -20,7 +20,7 @@ class AddProductInputModel implements AddProductInputEntity {
   final num ratingCount;
   final List<ReviewModel> reviews;
 
-  AddProductInputModel({
+  ProductModel({
     required this.name,
     required this.price,
     required this.description,
@@ -37,9 +37,8 @@ class AddProductInputModel implements AddProductInputEntity {
     required this.reviews,
   });
 
-  factory AddProductInputModel.fromEntity(
-      AddProductInputEntity addProductInputEntity) {
-    return AddProductInputModel(
+  factory ProductModel.fromEntity(ProductEntity addProductInputEntity) {
+    return ProductModel(
       name: addProductInputEntity.name,
       price: addProductInputEntity.price,
       description: addProductInputEntity.description,

@@ -22,7 +22,7 @@ class AddProductCubit extends Cubit<AddProductState> {
   TextEditingController codeContoller = TextEditingController();
   TextEditingController desContoller = TextEditingController();
 
-  Future<void> addProduct(AddProductInputEntity addProductInputEntity) async {
+  Future<void> addProduct(ProductEntity addProductInputEntity) async {
     emit(AddProductLoading());
     var result = await productsRepo.addProduct(addProductInputEntity);
     result.fold((f) {
