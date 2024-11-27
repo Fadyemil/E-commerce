@@ -19,6 +19,7 @@ class ProductModel implements ProductEntity {
   final num avgRating;
   final num ratingCount;
   final List<ReviewModel> reviews;
+  final int sellingCount;
 
   ProductModel({
     required this.name,
@@ -35,6 +36,7 @@ class ProductModel implements ProductEntity {
     this.avgRating = 0,
     this.ratingCount = 0,
     required this.reviews,
+    this.sellingCount = 0,
   });
 
   factory ProductModel.fromEntity(ProductEntity addProductInputEntity) {
@@ -55,6 +57,27 @@ class ProductModel implements ProductEntity {
           .toList(),
     );
   }
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      name: json['name'],
+      price: json['price'],
+      description: json['description'],
+      code: json['code'],
+      // image: File.fromUri(Uri.parse(json['image'])),
+      isFeatured: json['isFeatured'],
+      // imageUrl: json['imageUrl'],
+      expirationMonths: json['expirationMonths'],
+      isOrganic: json['isOrganic'],
+      numberOfCalories: json['numberOfCalories'],
+      unitAmount: json['unitAmount'],
+      avgRating: json['avgRating'],
+      ratingCount: json['ratingCount'],
+      reviews: json['reviews']
+         .map((review) => ReviewModel.fromJson(review))
+         .toList(),
+      sellingCount: json['sellingCount'],
+    );
+  }
   toJson() {
     return {
       'name': name,
@@ -70,6 +93,7 @@ class ProductModel implements ProductEntity {
       'ratingCount': ratingCount,
       'expirationMonths': expirationMonths,
       'reviews': reviews.map((review) => review.toJson()).toList(),
+      'sellingCount': sellingCount,
     };
   }
 }

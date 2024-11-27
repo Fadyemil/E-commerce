@@ -25,6 +25,16 @@ class ReviewModel implements ReviewEntity {
     );
   }
 
+  factory ReviewModel.fromJson(Map<String, dynamic> json) {
+    return ReviewModel(
+      name: json['name'],
+      image: json['image'],
+      date: json['date'],
+      reviewDescription: json['reviewDescription'],
+      ratting: json['ratting'],
+    );
+  }
+
   toJson() {
     return {
       'name': name,
