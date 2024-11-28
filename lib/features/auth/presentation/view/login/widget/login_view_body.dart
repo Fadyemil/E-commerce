@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:io' show Platform; // Ensure dart:io is only imported when targeting mobile platforms
+import 'dart:io'
+    show
+        Platform; // Ensure dart:io is only imported when targeting mobile platforms
 
 import 'package:e_commerce/core/constants/images.dart';
 import 'package:e_commerce/features/auth/presentation/manger/login/login_cubit.dart';
@@ -40,7 +42,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             // Google Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة جوجل',
-              image: Assets.assetsImagesGoogleIcon,
+              image: Assets.imageGoogleIcon,
               onPressed: () async {
                 await context.read<LoginCubit>().loginWithGoogle();
               },
@@ -52,7 +54,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 children: [
                   SocialLoginButton(
                     title: 'تسجيل بواسطة أبل',
-                    image: Assets.assetsImagesApplIcon,
+                    image: Assets.imageApplIcon,
                     onPressed: () {},
                   ),
                   SizedBox(height: 10.h),
@@ -63,7 +65,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             // Facebook Sign-In Button
             SocialLoginButton(
               title: 'تسجيل بواسطة فيسبوك',
-              image: Assets.assetsImagesFacebookIcon,
+              image: Assets.imageFacebookIcon,
               onPressed: () {
                 context.read<LoginCubit>().loginWithFacebook();
               },

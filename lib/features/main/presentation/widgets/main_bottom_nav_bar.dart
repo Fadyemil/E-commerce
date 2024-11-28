@@ -48,26 +48,26 @@ class MainBottomNavBar extends StatelessWidget {
               _buildGButton(
                 selectedIndex == 0,
                 'الرئيسية',
-                Assets.assetsImagesVuesaxBoldHome,
-                Assets.assetsImagesVuesaxOutlineHome,
+                Assets.imageVuesaxBoldHome,
+                Assets.imageVuesaxOutlineHome,
               ),
               _buildGButton(
                 selectedIndex == 1,
                 'المنتجات',
-                Assets.assetsImagesVuesaxBoldProducts,
-                Assets.assetsImagesVuesaxOutlineProducts,
+                Assets.imageVuesaxBoldProducts,
+                Assets.imageVuesaxOutlineProducts,
               ),
               _buildGButton(
                 selectedIndex == 2,
                 'سلة التسوق',
-                Assets.assetsImagesVuesaxBoldShoppingCart,
-                Assets.assetsImagesVuesaxOutlineShoppingCart,
+                Assets.imageVuesaxBoldShoppingCart,
+                Assets.imageVuesaxOutlineShoppingCart,
               ),
               _buildGButton(
                 selectedIndex == 3,
                 'حسابي',
-                Assets.assetsImagesVuesaxBoldUser,
-                Assets.assetsImagesVuesaxOutlineUser,
+                Assets.imageVuesaxBoldUser,
+                Assets.imageVuesaxOutlineUser,
               ),
             ],
             selectedIndex: selectedIndex,
@@ -79,7 +79,8 @@ class MainBottomNavBar extends StatelessWidget {
   }
 
   // دالة لإنشاء زر GButton
-  GButton _buildGButton(bool isSelected, String text, String boldIcon, String outlineIcon) {
+  GButton _buildGButton(
+      bool isSelected, String text, String boldIcon, String outlineIcon) {
     return GButton(
       icon: Icons.home,
       leading: SizedBox(

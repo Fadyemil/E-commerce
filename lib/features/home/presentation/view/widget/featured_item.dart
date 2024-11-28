@@ -29,7 +29,7 @@ class FeaturedItem extends StatelessWidget {
                 top: 0,
                 right: size.width * 0.4,
                 child: SvgPicture.asset(
-                  Assets.assetsImagesPageViewItem2Image,
+                  Assets.imagePageViewItem2Image,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -38,7 +38,7 @@ class FeaturedItem extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: svg.Svg(Assets.assetsImagesFeaturedItemBackground),
+                    image: svg.Svg(Assets.imageFeaturedItemBackground),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -75,4 +75,3 @@ class FeaturedItem extends StatelessWidget {
     );
   }
 }
-

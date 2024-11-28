@@ -25,13 +25,10 @@ class CustomSearch extends StatelessWidget {
         hintText: 'ابحث عن.......',
         suffixIcon: SizedBox(
             width: 20.w,
-            child: Center(
-                child: SvgPicture.asset(Assets.assetsImagesFilter))),
+            child: Center(child: SvgPicture.asset(Assets.imageFilter))),
         prefixIcon: SizedBox(
             width: 24.w,
-            child: Center(
-                child:
-                    SvgPicture.asset(Assets.assetsImagesSearchIcon))),
+            child: Center(child: SvgPicture.asset(Assets.imageSearchIcon))),
       ),
     );
   }

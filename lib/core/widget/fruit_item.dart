@@ -34,7 +34,7 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20.h),
-                Image.asset(Assets.assetsImagesWatermelonTest),
+                Image.asset(Assets.imageWatermelonTest),
                 ListTile(
                   title: Text(
                     productBsetSelling.name,

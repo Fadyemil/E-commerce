@@ -11,14 +11,14 @@ class CutsomHomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(Assets.assetsImagesProfileImage),
+      leading: Image.asset(Assets.imageProfileImage),
       title: Text(
         'صباح الخير !..',
         style: AppTextStyles.bodyBasaRegular16
             .copyWith(color: const Color(0xff949D9E)),
       ),
       subtitle: Text(
-        getUser()?.name ?? 'Gest' ,
+        getUser()?.name ?? 'Gest',
         style: AppTextStyles.bodyBasaBold16.copyWith(color: Colors.black),
       ),
       trailing: Container(
@@ -28,7 +28,7 @@ class CutsomHomeAppBar extends StatelessWidget {
             shape: OvalBorder(),
             color: Colors.white,
           ),
-          child: SvgPicture.asset(Assets.assetsImagesNotification)),
+          child: SvgPicture.asset(Assets.imageNotification)),
     );
   }
 }

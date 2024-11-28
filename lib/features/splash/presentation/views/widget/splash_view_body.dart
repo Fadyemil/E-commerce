@@ -37,12 +37,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           mainAxisAlignment:
               isArabic ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
-            SvgPicture.asset(Assets.assetsImagesPlant),
+            SvgPicture.asset(Assets.imagePlant),
           ],
         ),
-        SvgPicture.asset(Assets.assetsImagesLogo),
+        SvgPicture.asset(Assets.imageLogo),
         SvgPicture.asset(
-          Assets.assetsImagesSplashBottom,
+          Assets.imageSplashBottom,
           fit: BoxFit.fill,
         )
       ],

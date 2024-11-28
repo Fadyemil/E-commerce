@@ -16,7 +16,7 @@ class NotificationWidget extends StatelessWidget {
         color: Color(0xFFEEF8ED),
         shape: OvalBorder(),
       ),
-      child: SvgPicture.asset(Assets.assetsImagesNotification),
+      child: SvgPicture.asset(Assets.imageNotification),
     );
   }
 }

@@ -32,7 +32,7 @@ class CustomCheckBox extends StatelessWidget {
             ? Padding(
                 padding: const EdgeInsets.all(2),
                 child: SvgPicture.asset(
-                  Assets.assetsImagesCheck,
+                  Assets.imageCheck,
                 ),
               )
             : const SizedBox(),
