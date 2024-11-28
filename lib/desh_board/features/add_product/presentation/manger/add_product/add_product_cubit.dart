@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce/desh_board/core/repo/image_repo/image_repo.dart';
-import 'package:e_commerce/desh_board/core/repo/poduct_repo/products_repo.dart';
+import 'package:e_commerce/desh_board/core/repo/poduct_repo/desh_products_repo.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -11,7 +11,7 @@ class AddProductCubit extends Cubit<AddProductState> {
   AddProductCubit(this.imageRepo, this.productsRepo)
       : super(AddProductInitial());
   final ImageRepo imageRepo;
-  final ProductsRepo productsRepo;
+  final DeshProductsRepo productsRepo;
 
   final GlobalKey<FormState> formState = GlobalKey<FormState>();
   TextEditingController nameContoller = TextEditingController();
