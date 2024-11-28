@@ -18,7 +18,7 @@ class CutsomHomeAppBar extends StatelessWidget {
             .copyWith(color: const Color(0xff949D9E)),
       ),
       subtitle: Text(
-        getUser().name,
+        getUser()?.name ?? 'Gest' ,
         style: AppTextStyles.bodyBasaBold16.copyWith(color: Colors.black),
       ),
       trailing: Container(

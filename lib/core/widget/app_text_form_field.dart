@@ -13,7 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
-  final Function(String?) validator;
+  final String? Function(String?) validator;
   final TextInputType? keyboardType;
   final int? maxLength;
   final int? maxlines;

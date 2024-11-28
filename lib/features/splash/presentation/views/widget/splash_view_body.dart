@@ -50,7 +50,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   Future<void> _navigateAfterSplash() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future<dynamic>.delayed(const Duration(seconds: 3));
 
     CacheHelper prefs = CacheHelper();
     bool isBoarding = prefs.getData(key: kIsBoardingViewSeen) as bool? ?? false;

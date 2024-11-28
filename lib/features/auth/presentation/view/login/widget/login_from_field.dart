@@ -35,6 +35,7 @@ class _LoginFromFieldState extends State<LoginFromField> {
               if (value == null || value.isEmpty) {
                 return 'رجاء ادخال البريد الإلكتروني';
               }
+              return null;
             },
             controller: context.read<LoginCubit>().emailContoller,
           ),
@@ -45,6 +46,7 @@ class _LoginFromFieldState extends State<LoginFromField> {
               if (value == null || value.isEmpty) {
                 return 'رجاء ادخال كلمة المرور';
               }
+              return null;
             },
             controller: context.read<LoginCubit>().passwordContoller,
             isObscureText: isObscureText,

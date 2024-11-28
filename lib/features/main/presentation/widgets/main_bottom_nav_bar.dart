@@ -7,7 +7,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainBottomNavBar extends StatelessWidget {
   final int selectedIndex;
-  final Function(int) onTabChange;
+  final void Function(int) onTabChange;
 
   const MainBottomNavBar({
     Key? key,

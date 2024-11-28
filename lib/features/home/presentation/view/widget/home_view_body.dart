@@ -55,9 +55,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               BestSellingGridView(),
             ],
           );
-        } else {
-          return Center(child: Text('Loading...'));
-        }
+        } 
+        else if (state is ProductsLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            return Center(child: Text('Error loading products'));
+          }
       },
     );
   }

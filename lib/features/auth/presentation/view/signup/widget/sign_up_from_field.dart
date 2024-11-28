@@ -42,6 +42,7 @@ class _SignUpFromFieldState extends State<SignUpFromField> {
               if (value == null || value.isEmpty) {
                 return 'رجاء ادخال الاسم كامل';
               }
+              return null;
             },
             controller: context.read<SignUpCubit>().nameContoller,
           ),
@@ -53,6 +54,7 @@ class _SignUpFromFieldState extends State<SignUpFromField> {
               if (value == null || value.isEmpty) {
                 return 'رجاء ادخال البريد الإلكتروني';
               }
+              return null;
             },
             controller: context.read<SignUpCubit>().emailContoller,
           ),
@@ -63,10 +65,12 @@ class _SignUpFromFieldState extends State<SignUpFromField> {
               if (value == null || value.isEmpty) {
                 return 'رجاء ادخال كلمة المرور';
               }
+              return null;
             },
             controller: context.read<SignUpCubit>().passwordContoller,
             isObscureText: isObscureText,
             keyboardType: TextInputType.visiblePassword,
+            maxlines: 1,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
