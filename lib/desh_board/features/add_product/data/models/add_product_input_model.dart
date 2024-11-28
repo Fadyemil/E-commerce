@@ -57,31 +57,32 @@ class ProductModel implements ProductEntity {
           .toList(),
     );
   }
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
-  return ProductModel(
-    name: json['name'] ?? '', // Default empty string if name is missing
-    price: (json['price'] as num?)?.toDouble() ?? 0.0, // Convert to double
-    description: json['description'] ?? '',
-    code: json['code'] ?? '',
-    // Handle potential null or invalid URI parsing
-    // image: json['image'] != null ? File.fromUri(Uri.tryParse(json['image']) ?? Uri()) : null,
-    isFeatured: json['isFeatured'] ?? false,
-    // imageUrl: json['imageUrl'] ?? '',
-    expirationMonths: json['expirationMonths'] ?? 0,
-    isOrganic: json['isOrganic'] ?? false,
-    numberOfCalories: json['numberOfCalories'] ?? 0,
-    unitAmount: json['unitAmount'] ?? 0,
-    avgRating: (json['avgRating'] as num?)?.toDouble() ?? 0.0,
-    ratingCount: json['ratingCount'] ?? 0,
-    reviews: (json['reviews'] as List<dynamic>?)
-            ?.map((review) => ReviewModel.fromJson(review))
-            .toList() ??
-        [], // Default to empty list if reviews are null
-    sellingCount: json['sellingCount'] ?? 0,
-  );
-}
 
-  toJson() {
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      name: json['name'] as String? ?? '',
+      price: json['price'] is num ? (json['price'] as num).toDouble() : 0.0,
+      description: json['description'] as String? ?? '',
+      code: json['code'] as String? ?? '',
+      isFeatured: json['isFeatured'] as bool? ?? false,
+      expirationMonths: json['expirationMonths'] as int? ?? 0,
+      isOrganic: json['isOrganic'] as bool? ?? false,
+      numberOfCalories: json['numberOfCalories'] as int? ?? 0,
+      unitAmount: json['unitAmount'] as int? ?? 0,
+      avgRating: json['avgRating'] is num
+          ? (json['avgRating'] as num).toDouble()
+          : 0.0,
+      ratingCount: json['ratingCount'] as int? ?? 0,
+      reviews: (json['reviews'] as List<dynamic>?)
+              ?.map((review) =>
+                  ReviewModel.fromJson(review as Map<String, dynamic>))
+              .toList() ??
+          [],
+      sellingCount: json['sellingCount'] as int? ?? 0,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
     return {
       'name': name,
       'price': price,

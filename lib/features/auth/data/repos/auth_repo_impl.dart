@@ -32,7 +32,7 @@ class AuthRepoImpl extends AuthRepo {
       );
 
       await user.updateDisplayName(name);
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future<dynamic>.delayed(const Duration(milliseconds: 500));
       await FirebaseAuth.instance.currentUser?.reload();
       User? updatedUser = FirebaseAuth.instance.currentUser;
 
@@ -77,7 +77,7 @@ class AuthRepoImpl extends AuthRepo {
       String uId = "${user.displayName} ${user.uid}";
       log("Constructed uId: $uId");
       var userEntity = await getUserData(uId: uId);
-      
+
       await saveUserData(user: userEntity);
 
       return Right(userEntity);
@@ -151,7 +151,8 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future addUserData({required UserEntity user}) async {
+  Future<Either<Faliure, UserEntity>> addUserData(
+      {required UserEntity user}) async {
     try {
       await firestoreService.addDocument(
           collectionPath: EndPoint.addUserData,
@@ -177,8 +178,8 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future saveUserData({required UserEntity user}) async {
+  Future<dynamic> saveUserData({required UserEntity user}) async {
     var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
-     await CacheHelper().saveData(key: kUserData, value: jsonData);
+    await CacheHelper().saveData(key: kUserData, value: jsonData);
   }
 }
