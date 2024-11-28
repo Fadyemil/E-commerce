@@ -4,7 +4,7 @@ class CacheHelper {
   static late SharedPreferences sharedPreferences;
 
 //! Here The Initialize of cache .
-  init() async {
+  Future<void> init() async {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
@@ -25,7 +25,7 @@ class CacheHelper {
     if (value is int) {
       return await sharedPreferences.setInt(key, value);
     } else {
-      return await sharedPreferences.setDouble(key, value);
+      return await sharedPreferences.setDouble(key, value as double);
     }
   }
 
@@ -58,7 +58,7 @@ class CacheHelper {
     } else if (value is bool) {
       return await sharedPreferences.setBool(key, value);
     } else {
-      return await sharedPreferences.setInt(key, value);
+      return await sharedPreferences.setInt(key, value as int);
     }
   }
 }
