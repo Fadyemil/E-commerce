@@ -5,6 +5,7 @@ import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/main.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
@@ -23,5 +24,9 @@ Future<void> main() async {
   );
   setupGetit();
   Bloc.observer = CustomBlocServer();
-  runApp(FruitHub(router: router));
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
+  ).then((_) {
+    runApp(FruitHub(router: router));
+  });
 }
