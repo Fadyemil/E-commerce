@@ -171,7 +171,7 @@ class FirestoreService {
       if (filterField != null && filterValue != null) {
         query = query.where(
           filterField,
-          isEqualTo: filterValue,
+          // isEqualTo: filterValue,
           isGreaterThan: filterValue,
         );
       }
