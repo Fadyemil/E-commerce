@@ -57,7 +57,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     bool isLogin = prefs.getData(key: kIsLigingViewSeen) as bool? ?? false;
 
     if (isLogin) {
-      context.goNamed(RouterName.home);
+      context.goNamed(RouterName.main_view);
     } else if (isBoarding) {
       context.goNamed(RouterName.login);
     } else {
