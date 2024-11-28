@@ -8,9 +8,8 @@ import 'package:e_commerce/desh_board/core/server/fire_storage.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:e_commerce/features/auth/domain/repo/auth_repo.dart';
 import 'package:get_it/get_it.dart';
-import 'package:e_commerce/core/repos/products_repo.dart' as core_repo;
-import 'package:e_commerce/core/repos/products_repo_impl.dart'
-    as core_repo_impl;
+import 'package:e_commerce/core/repos/products_repo.dart';
+import 'package:e_commerce/core/repos/products_repo_impl.dart';
 
 final getIt = GetIt.instance;
 
@@ -27,9 +26,8 @@ void setupGetit() {
   getIt.registerSingleton<DeshProductsRepo>(
     DeshProductsRepoImpl(firestoreService: getIt<FirestoreService>()),
   );
-  getIt.registerSingleton<core_repo.ProductsRepo>(
-    core_repo_impl.ProductsRepoImpl(
-        firestoreService: getIt<FirestoreService>()),
+  getIt.registerSingleton<ProductsRepo>(
+    ProductsRepoImpl(firestoreService: getIt<FirestoreService>()),
   );
 
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
