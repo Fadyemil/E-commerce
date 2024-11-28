@@ -49,6 +49,7 @@ class _LoginFromFieldState extends State<LoginFromField> {
             controller: context.read<LoginCubit>().passwordContoller,
             isObscureText: isObscureText,
             keyboardType: TextInputType.visiblePassword,
+            maxlines: 1,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
