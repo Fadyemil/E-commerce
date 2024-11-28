@@ -3,8 +3,11 @@ import 'package:e_commerce/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
+
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.productBsetSelling});
+  final ProductEntity productBsetSelling;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +37,14 @@ class FruitItem extends StatelessWidget {
                 Image.asset(Assets.assetsImagesWatermelonTest),
                 ListTile(
                   title: Text(
-                    'بطيخ',
+                    productBsetSelling.name,
                     style: AppTextStyles.bodySmallSemiBold13,
                   ),
                   subtitle: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '30 جنية /',
+                          text: '${productBsetSelling.price} جنية /',
                           style: AppTextStyles.bodySmallBold13.copyWith(
                             color: Color(0xffF4A91F),
                           ),
