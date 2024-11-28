@@ -58,26 +58,29 @@ class ProductModel implements ProductEntity {
     );
   }
   factory ProductModel.fromJson(Map<String, dynamic> json) {
-    return ProductModel(
-      name: json['name'],
-      price: json['price'],
-      description: json['description'],
-      code: json['code'],
-      // image: File.fromUri(Uri.parse(json['image'])),
-      isFeatured: json['isFeatured'],
-      // imageUrl: json['imageUrl'],
-      expirationMonths: json['expirationMonths'],
-      isOrganic: json['isOrganic'],
-      numberOfCalories: json['numberOfCalories'],
-      unitAmount: json['unitAmount'],
-      avgRating: json['avgRating'],
-      ratingCount: json['ratingCount'],
-      reviews: json['reviews']
-         .map((review) => ReviewModel.fromJson(review))
-         .toList(),
-      sellingCount: json['sellingCount'],
-    );
-  }
+  return ProductModel(
+    name: json['name'] ?? '', // Default empty string if name is missing
+    price: (json['price'] as num?)?.toDouble() ?? 0.0, // Convert to double
+    description: json['description'] ?? '',
+    code: json['code'] ?? '',
+    // Handle potential null or invalid URI parsing
+    // image: json['image'] != null ? File.fromUri(Uri.tryParse(json['image']) ?? Uri()) : null,
+    isFeatured: json['isFeatured'] ?? false,
+    // imageUrl: json['imageUrl'] ?? '',
+    expirationMonths: json['expirationMonths'] ?? 0,
+    isOrganic: json['isOrganic'] ?? false,
+    numberOfCalories: json['numberOfCalories'] ?? 0,
+    unitAmount: json['unitAmount'] ?? 0,
+    avgRating: (json['avgRating'] as num?)?.toDouble() ?? 0.0,
+    ratingCount: json['ratingCount'] ?? 0,
+    reviews: (json['reviews'] as List<dynamic>?)
+            ?.map((review) => ReviewModel.fromJson(review))
+            .toList() ??
+        [], // Default to empty list if reviews are null
+    sellingCount: json['sellingCount'] ?? 0,
+  );
+}
+
   toJson() {
     return {
       'name': name,
