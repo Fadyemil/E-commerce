@@ -2,21 +2,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Fruites Deve",
+      "name": "Srore Deve",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_deve.dart",
       "args": ["--flavor", "deve", "--target", "lib/main_deve.dart" ]
     },
     {
-      "name": "Fruites Prod",
+      "name": "Srore Prod",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_prod.dart",
       "args": ["--flavor", "prod", "--target", "lib/main_prod.dart" ]
     },
     {
-      "name": "Fruites dashsBoard",
+      "name": "Srore dashsBoard",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_dashs_board.dart",

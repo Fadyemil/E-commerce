@@ -60,17 +60,17 @@ android {
     productFlavors {
         deve {
             dimension "default"
-            resValue "string", "app_name_flavor", "Fruites deve"
+            resValue "string", "app_name_flavor", "Srore deve"
             applicationIdSuffix ".deve"
         }
         prod {
             dimension "default"
-            resValue "string", "app_name_flavor", "Fruites prod"
+            resValue "string", "app_name_flavor", "Srore prod"
             applicationIdSuffix ".prod"
         }
         dashsBoard {
             dimension "default"
-            resValue "string", "app_name_flavor", "Fruites dashsBoard"
+            resValue "string", "app_name_flavor", "Srore dashsBoard"
             applicationIdSuffix ".prod"
         }
     }

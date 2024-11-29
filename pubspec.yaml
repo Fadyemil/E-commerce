@@ -111,12 +111,12 @@ flutter_launcher_icons:
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "assets/app_icon.png"
+    image_path: "assets/images/icon_app_e_commerce.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
   remove_alpha_ios: true
-  image_path: "assets/app_icon.png"
-  adaptive_icon_foreground: "assets/app_icon.png"
+  image_path: "assets/images/icon_app_e_commerce.png"
+  adaptive_icon_foreground: "assets/images/icon_app_e_commerce.png"
   adaptive_icon_background: "#ffffff"
 
 flutter_intl:
