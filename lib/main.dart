@@ -17,13 +17,14 @@ class FruitHub extends StatelessWidget {
     return ValueListenableBuilder<bool>(
       valueListenable: ConnectivityController.instance.isConnected,
       builder: (context, isConnected, child) {
-        return isConnected ? _buildApp() : _buildNoNetworkScreen();
+        return isConnected ? _buildApp(context) : _buildNoNetworkScreen();
       },
     );
   }
 
   // Builds the app when there's a network connection
-  Widget _buildApp() {
+  Widget _buildApp(BuildContext context) {
+    const languageCode = 'ar';
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -36,14 +37,14 @@ class FruitHub extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        locale: const Locale('ar'), 
+        locale: Locale(languageCode),
         title: 'Fruit Hub',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          fontFamily: 'Cairo',
+          fontFamily: _getFontFamily(languageCode),
         ),
         builder: (context, child) {
           ConnectivityController.instance.init();
@@ -54,6 +55,10 @@ class FruitHub extends StatelessWidget {
         routerConfig: router,
       ),
     );
+  }
+
+  String _getFontFamily(String Lang) {
+    return Lang == 'ar' ? 'Cairo' : 'Poppins';
   }
 
   // Builds the no-network screen when there's no connection
