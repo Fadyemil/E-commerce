@@ -48,8 +48,13 @@ class FruitHub extends StatelessWidget {
         ),
         builder: (context, child) {
           ConnectivityController.instance.init();
-          return Scaffold(
-            body: child!,
+          return GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus!.unfocus();
+            },
+            child: Scaffold(
+              body: child!,
+            ),
           );
         },
         routerConfig: router,
