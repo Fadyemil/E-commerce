@@ -32,6 +32,9 @@ dependencies:
   cloud_firestore: ^5.4.5
   google_sign_in: ^6.2.2
 
+#supabase
+  supabase_flutter: ^2.8.1
+
 #Bloc
   flutter_bloc: ^8.1.6
 #shared preferences
