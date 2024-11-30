@@ -5,14 +5,16 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:e_commerce/core/errors/exceptions.dart';
+import 'package:e_commerce/desh_board/core/server/Storage_server_repo.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as b;
 
-class FireStorageService {
+class FireStorageService  implements StorageServerRepo{
   //~ Firebase Storage reference
   final storageReference = FirebaseStorage.instance.ref();
 
   ///~ Uploads a file to Firebase Storage and returns its download URL
+  @override
   Future<String?> uploadFile(File file, String path) async {
     try {
       String fileName = b.basenameWithoutExtension(file.path);
@@ -31,6 +33,7 @@ class FireStorageService {
   }
 
   ///~ Deletes a file from Firebase Storage based on its download URL
+  @override
   Future<bool> deleteFile(String fileUrl) async {
     try {
       var fileReference = FirebaseStorage.instance.refFromURL(fileUrl);
@@ -43,6 +46,7 @@ class FireStorageService {
   }
 
   ///~ Updates an existing file in Firebase Storage by replacing it with a new one
+  @override
   Future<String?> updateFile(File file, String fileUrl) async {
     try {
       await deleteFile(fileUrl);
@@ -55,6 +59,7 @@ class FireStorageService {
   }
 
   ///~ Downloads a file from Firebase Storage and returns its data as Uint8List
+  @override
   Future<Uint8List?> downloadFile(String fileUrl) async {
     try {
       var fileReference = FirebaseStorage.instance.refFromURL(fileUrl);
@@ -67,6 +72,7 @@ class FireStorageService {
   }
 
   ///~ Retrieves the download URL of a file from Firebase Storage based on its path
+  @override
   Future<String?> getFileUrl(String path) async {
     try {
       var fileReference = storageReference.child(path);
