@@ -1,8 +1,7 @@
-import 'package:e_commerce/core/constants/images.dart';
 import 'package:e_commerce/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
 
 class FruitItem extends StatelessWidget {
@@ -34,7 +33,23 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20.h),
-                Image.asset(Assets.imageWatermelonTest),
+                CachedNetworkImage(
+                  width: 163.w,
+                  height: 110.h,
+                  imageUrl:
+                      'https://jjfnqrvkebweapmofqtn.supabase.co/storage/v1/object/public/${productBsetSelling.image}',
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              Colors.red, BlendMode.colorBurn)),
+                    ),
+                  ),
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
                 ListTile(
                   title: Text(
                     productBsetSelling.name,
