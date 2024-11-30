@@ -17,13 +17,14 @@ class BestSellingGridView extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 8,
-        childAspectRatio: 163 / 200,
+        childAspectRatio: 163 / 250,
       ),
       itemCount: context.read<ProductsCubit>().productBsetSelling.length,
       itemBuilder: (context, index) {
         log(context.read<ProductsCubit>().productBsetSelling.length.toString());
         return FruitItem(
-          productBsetSelling: context.read<ProductsCubit>().productBsetSelling[index],
+          productBsetSelling:
+              context.read<ProductsCubit>().productBsetSelling[index],
         );
       },
     );
