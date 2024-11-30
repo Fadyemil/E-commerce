@@ -15,8 +15,11 @@ class ImageRepoImpl implements ImageRepo {
 
   ImageRepoImpl({required this.supabaseStorageServer});
   @override
-  Future<Either<Faliure, String>> uploadImage(File image) async {
+  Future<Either<Faliure, String>> uploadImage(File? image) async {
     try {
+      if (image == null) {
+      throw CustomException(message: 'حدث خطأ أثناء إضافة البيانات.');
+      }
       String? imageUrl =
           await supabaseStorageServer.uploadFile(image, EndPoint.images);
       return Right(imageUrl!);

@@ -1,12 +1,16 @@
+import 'dart:io';
+// import 'dart:typed_data';
+
 import 'package:e_commerce/desh_board/features/add_product/data/models/review_model.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
+import 'package:e_commerce/desh_board/features/add_product/dmain/entites/review_entity.dart';
 
 class ProductModel implements ProductEntity {
   final String name;
   final num price;
   final String description;
   final String code;
-  final String image;
+   File? image;
   final bool isFeatured;
   String? imageUrl;
   final int expirationMonths;
@@ -38,25 +42,29 @@ class ProductModel implements ProductEntity {
   });
 
   factory ProductModel.fromEntity(ProductEntity addProductInputEntity) {
-    return ProductModel(
-      name: addProductInputEntity.name,
-      price: addProductInputEntity.price,
-      description: addProductInputEntity.description,
-      code: addProductInputEntity.code,
-      isFeatured: addProductInputEntity.isFeatured,
-      expirationMonths: addProductInputEntity.expirationMonths,
-      isOrganic: addProductInputEntity.isOrganic,
-      numberOfCalories: addProductInputEntity.numberOfCalories,
-      unitAmount: addProductInputEntity.unitAmount,
-      avgRating: addProductInputEntity.avgRating,
-      ratingCount: addProductInputEntity.ratingCount,
-      reviews: addProductInputEntity.reviews
-          .map((review) => ReviewModel.fromEntity(review))
-          .toList(),
-      image: addProductInputEntity.image,
-      imageUrl: addProductInputEntity.imageUrl,
-    );
+  if (addProductInputEntity.imageUrl == null || addProductInputEntity.imageUrl!.isEmpty) {
+    throw ArgumentError('Image URL must not be null or empty');
   }
+  return ProductModel(
+    name: addProductInputEntity.name,
+    price: addProductInputEntity.price,
+    description: addProductInputEntity.description,
+    code: addProductInputEntity.code,
+    isFeatured: addProductInputEntity.isFeatured,
+    expirationMonths: addProductInputEntity.expirationMonths,
+    isOrganic: addProductInputEntity.isOrganic,
+    numberOfCalories: addProductInputEntity.numberOfCalories,
+    unitAmount: addProductInputEntity.unitAmount,
+    avgRating: addProductInputEntity.avgRating,
+    ratingCount: addProductInputEntity.ratingCount,
+    reviews: addProductInputEntity.reviews
+        .map((review) => ReviewModel.fromEntity(review))
+        .toList(),
+    imageUrl: addProductInputEntity.imageUrl,
+    image: null, // تجاهل الصورة الأصلية
+  );
+}
+
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
@@ -80,7 +88,7 @@ class ProductModel implements ProductEntity {
           [],
       sellingCount: json['sellingCount'] as int? ?? 0,
       imageUrl: json['imageUrl'] as String? ?? '',
-      image: json['image'] as String? ?? '',
+      image: null,
     );
   }
 
@@ -90,7 +98,8 @@ class ProductModel implements ProductEntity {
       'price': price,
       'description': description,
       'code': code,
-      'image': imageUrl,
+      'image': image,
+      'imageUrl': imageUrl,
       'isFeatured': isFeatured,
       'isOrganic': isOrganic,
       'numberOfCalories': numberOfCalories,
@@ -101,5 +110,11 @@ class ProductModel implements ProductEntity {
       'reviews': reviews.map((review) => review.toJson()).toList(),
       'sellingCount': sellingCount,
     };
+  }
+
+  @override
+  ProductEntity copyWith({String? name, num? price, String? description, String? code, File? image, bool? isFeatured, String? imageUrl, int? expirationMonths, bool? isOrganic, int? numberOfCalories, int? unitAmount, num? avgRating, num? ratingCount, List<ReviewEntity>? reviews}) {
+    // TODO: implement copyWith
+    throw UnimplementedError();
   }
 }
