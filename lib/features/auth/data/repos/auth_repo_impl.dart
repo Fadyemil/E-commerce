@@ -101,7 +101,7 @@ class AuthRepoImpl extends AuthRepo {
 
       var isUserExist = await firestoreService.checkIfDataExists(
           path: EndPoint.isUerExists,
-          docuementId: user.displayName! + " " + user.uid);
+          documentId: user.displayName! + " " + user.uid);
 
       if (isUserExist) {
         await getUserData(uId: user.displayName! + " " + user.uid);
@@ -131,7 +131,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       var isUserExist = await firestoreService.checkIfDataExists(
           path: EndPoint.isUerExists,
-          docuementId: user.displayName! + " " + user.uid);
+          documentId: user.displayName! + " " + user.uid);
 
       if (isUserExist) {
         await getUserData(uId: user.displayName! + " " + user.uid);
