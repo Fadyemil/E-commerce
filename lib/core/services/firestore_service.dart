@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
+import 'package:e_commerce/core/services/data_base_service_repo.dart';
 
-class FirestoreService {
+class FirestoreService implements DataBaseServiceRepo {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   //~ Add a new document
+  @override
   Future<void> addDocument({
     required String collectionPath,
     required Map<String, dynamic> data,
@@ -26,6 +28,7 @@ class FirestoreService {
   }
 
   //~ Get a single document by ID
+  @override
   Future<Map<String, dynamic>?> getDocumentById({
     required String collectionPath,
     required String documentId,
@@ -44,6 +47,7 @@ class FirestoreService {
   }
 
   //~ Get all documents from a collection
+  @override
   Future<List<Map<String, dynamic>>> getAllDocuments({
     required String collectionPath,
   }) async {
@@ -59,6 +63,7 @@ class FirestoreService {
   }
 
   //~ Update a document
+  @override
   Future<void> updateDocument({
     required String collectionPath,
     required String documentId,
@@ -74,6 +79,7 @@ class FirestoreService {
   }
 
   //~ Delete a document
+  @override
   Future<void> deleteDocument({
     required String collectionPath,
     required String documentId,
@@ -88,13 +94,15 @@ class FirestoreService {
   }
 
   //~ Check if a document exists
+  @override
   Future<bool> checkIfDataExists(
-      {required String path, required String docuementId}) async {
-    var data = await _firestore.collection(path).doc(docuementId).get();
+      {required String path, required String documentId}) async {
+    var data = await _firestore.collection(path).doc(documentId).get();
     return data.exists;
   }
 
   //~ Search documents by field
+  @override
   Future<List<Map<String, dynamic>>> searchDocuments({
     required String collectionPath,
     required String field,
@@ -115,6 +123,7 @@ class FirestoreService {
   }
 
   //~ Listen to a specific document changes
+  @override
   Stream<Map<String, dynamic>?> listenToDocument({
     required String collectionPath,
     required String documentId,
@@ -137,6 +146,7 @@ class FirestoreService {
   }
 
   //~ Listen to changes in a collection
+  @override
   Stream<List<Map<String, dynamic>>> listenToCollection({
     required String collectionPath,
   }) {
@@ -157,6 +167,7 @@ class FirestoreService {
   }
 
   //~ Advanced Query (Filtering and Sorting)
+  @override
   Future<List<Map<String, dynamic>>> getDocumentsWithFilterAndSort({
     required String collectionPath,
     String? filterField,
@@ -192,11 +203,12 @@ class FirestoreService {
   }
 
   //~ Paginate through large collections
+  @override
   Future<List<Map<String, dynamic>>> paginateDocuments({
     required String collectionPath,
     required String orderByField,
     int limit = 10,
-    DocumentSnapshot? startAfterDocument,
+    dynamic startAfterDocument,
   }) async {
     try {
       Query query = _firestore
@@ -205,7 +217,8 @@ class FirestoreService {
           .limit(limit);
 
       if (startAfterDocument != null) {
-        query = query.startAfterDocument(startAfterDocument);
+        query =
+            query.startAfterDocument(startAfterDocument as DocumentSnapshot);
       }
 
       final querySnapshot = await query.get();
