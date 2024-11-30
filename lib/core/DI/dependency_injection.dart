@@ -5,6 +5,7 @@ import 'package:e_commerce/desh_board/core/repo/image_repo/image_repo_impl.dart'
 import 'package:e_commerce/desh_board/core/repo/poduct_repo/desh_products_repo.dart';
 import 'package:e_commerce/desh_board/core/repo/poduct_repo/desh_products_repo_impl.dart';
 import 'package:e_commerce/desh_board/core/server/fire_storage.dart';
+import 'package:e_commerce/desh_board/core/server/supabase_storage_server.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:e_commerce/features/auth/domain/repo/auth_repo.dart';
 import 'package:get_it/get_it.dart';
@@ -20,9 +21,14 @@ void setupGetit() {
 
   getIt.registerSingleton<FireStorageService>(FireStorageService());
 
+  getIt.registerSingleton<SupabaseStorageServer>(
+    SupabaseStorageServer(),
+  );
+
   getIt.registerSingleton<ImageRepo>(ImageRepoImpl(
-      // fireStorageService: getIt<FireStorageService>(),
-      ));
+    supabaseStorageServer: getIt<SupabaseStorageServer>(),
+  ));
+  
   getIt.registerSingleton<DeshProductsRepo>(
     DeshProductsRepoImpl(firestoreService: getIt<FirestoreService>()),
   );
