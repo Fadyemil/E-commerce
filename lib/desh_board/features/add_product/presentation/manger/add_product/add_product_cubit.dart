@@ -38,8 +38,12 @@ class AddProductCubit extends Cubit<AddProductState> {
     await result.fold((f) {
       emit(AddProductFailure(errorMessage: f.toString()));
     }, (url) async {
-      addProductInputEntity.imageUrl = url;
-      var result = await productsRepo.addProduct(addProductInputEntity);
+      final updatedEntity = addProductInputEntity.copyWith(
+        image: null,
+        imageUrl: url,
+      );
+
+      var result = await productsRepo.addProduct(updatedEntity);
       result.fold((f) {
         emit(AddProductFailure(errorMessage: f.toString()));
       }, (product) {

@@ -54,7 +54,6 @@ class AddProductButton extends StatelessWidget {
                     context.read<AddProductCubit>().unitAmountContoller.text),
                 reviews: [],
                 image: image!,
-                imageUrl: image
               );
               context.read<AddProductCubit>().addProduct(input);
             }
