@@ -125,7 +125,7 @@ class _FormAddProductState extends State<FormAddProduct> {
             ),
             SizedBox(height: 16.h),
 
-            // // ~ Checkbox for marking is orgically
+            // ~ Checkbox for marking is orgically
             IsOrganic(
               isTermsAccepted: isOrganic,
               onChecked: (value) {
@@ -136,7 +136,7 @@ class _FormAddProductState extends State<FormAddProduct> {
             ),
             SizedBox(height: 16.h),
 
-            // // ~ Image selection field
+            // ~ Image selection field
             ImageField(
               onFileChanged: (File? value) {
                 image = value;
@@ -145,7 +145,11 @@ class _FormAddProductState extends State<FormAddProduct> {
             SizedBox(height: 24.h),
 
             // ~ Button to add the product
-            AddProductButton(isChecked: isChecked, isOrganic: isOrganic),
+            AddProductButton(
+              isChecked: isChecked,
+              isOrganic: isOrganic,
+              image: image,
+            ),
           ],
         ),
       ),
