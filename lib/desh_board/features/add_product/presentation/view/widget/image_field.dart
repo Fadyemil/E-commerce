@@ -37,12 +37,14 @@ class _ImageFieldState extends State<ImageField> {
                 final bytes = await pickedFile.readAsBytes();
                 setState(() {
                   webImage = bytes;
+                  widget.onFileChanged(File(pickedFile.path));
                 });
-                widget.onFileChanged(File(pickedFile.path));
               } else {
                 setState(() {
-                  fileImage = File(pickedFile.path);
-                  widget.onFileChanged(File(pickedFile.path));
+                  setState(() {
+                    fileImage = File(pickedFile.path);
+                    widget.onFileChanged(File(pickedFile.path));
+                  });
                 });
               }
             }

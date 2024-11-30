@@ -139,7 +139,9 @@ class _FormAddProductState extends State<FormAddProduct> {
             // ~ Image selection field
             ImageField(
               onFileChanged: (File? value) {
-                image = value;
+                setState(() {
+                  image = value;
+                });
               },
             ),
             SizedBox(height: 24.h),
