@@ -1,5 +1,3 @@
-// import 'dart:io';
-
 import 'package:e_commerce/desh_board/features/add_product/data/models/review_model.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
 
@@ -8,9 +6,9 @@ class ProductModel implements ProductEntity {
   final num price;
   final String description;
   final String code;
-  // final File image;
+  final String image;
   final bool isFeatured;
-  // String? imageUrl;
+  String? imageUrl;
   final int expirationMonths;
   bool isOrganic = false;
   final int numberOfCalories;
@@ -26,9 +24,9 @@ class ProductModel implements ProductEntity {
     required this.price,
     required this.description,
     required this.code,
-    // required this.image,
+    required this.image,
     required this.isFeatured,
-    // this.imageUrl,
+    this.imageUrl,
     required this.expirationMonths,
     this.isOrganic = false,
     required this.numberOfCalories,
@@ -55,6 +53,8 @@ class ProductModel implements ProductEntity {
       reviews: addProductInputEntity.reviews
           .map((review) => ReviewModel.fromEntity(review))
           .toList(),
+      image: addProductInputEntity.image,
+      imageUrl: addProductInputEntity.imageUrl,
     );
   }
 
@@ -79,6 +79,8 @@ class ProductModel implements ProductEntity {
               .toList() ??
           [],
       sellingCount: json['sellingCount'] as int? ?? 0,
+      imageUrl: json['imageUrl'] as String? ?? '',
+      image: json['image'] as String? ?? '',
     );
   }
 
@@ -88,7 +90,7 @@ class ProductModel implements ProductEntity {
       'price': price,
       'description': description,
       'code': code,
-      // 'image': imageUrl,
+      'image': imageUrl,
       'isFeatured': isFeatured,
       'isOrganic': isOrganic,
       'numberOfCalories': numberOfCalories,

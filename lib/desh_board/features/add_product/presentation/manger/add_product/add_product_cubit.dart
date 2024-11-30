@@ -22,29 +22,29 @@ class AddProductCubit extends Cubit<AddProductState> {
   TextEditingController codeContoller = TextEditingController();
   TextEditingController desContoller = TextEditingController();
 
-  Future<void> addProduct(ProductEntity addProductInputEntity) async {
-    emit(AddProductLoading());
-    var result = await productsRepo.addProduct(addProductInputEntity);
-    result.fold((f) {
-      emit(AddProductFailure(errorMessage: f.toString()));
-    }, (product) {
-      emit(AddProductSuccess());
-    });
-  }
-
-  // Future<void> addProduct(AddProductInputEntity addProductInputEntity) async {
+  // Future<void> addProduct(ProductEntity addProductInputEntity) async {
   //   emit(AddProductLoading());
-  //   var result = await imageRepo.uploadImage(addProductInputEntity.image);
+  //   var result = await productsRepo.addProduct(addProductInputEntity);
   //   result.fold((f) {
   //     emit(AddProductFailure(errorMessage: f.toString()));
-  //   }, (url) async {
-  //     addProductInputEntity.imageUrl = url;
-  //     var result = await productsRepo.addProduct(addProductInputEntity);
-  //     result.fold((f) {
-  //       emit(AddProductFailure(errorMessage: f.toString()));
-  //     }, (product) {
-  //       emit(AddProductSuccess());
-  //     });
+  //   }, (product) {
+  //     emit(AddProductSuccess());
   //   });
   // }
+
+  Future<void> addProduct(ProductEntity addProductInputEntity) async {
+    emit(AddProductLoading());
+    var result = await imageRepo.uploadImage(addProductInputEntity.image);
+    await result.fold((f) {
+      emit(AddProductFailure(errorMessage: f.toString()));
+    }, (url) async {
+      addProductInputEntity.imageUrl = url;
+      var result = await productsRepo.addProduct(addProductInputEntity);
+      result.fold((f) {
+        emit(AddProductFailure(errorMessage: f.toString()));
+      }, (product) {
+        emit(AddProductSuccess());
+      });
+    });
+  }
 }

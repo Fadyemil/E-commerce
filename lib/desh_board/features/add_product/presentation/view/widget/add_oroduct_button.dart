@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:e_commerce/core/theme/app_text_styles.dart';
 import 'package:e_commerce/core/widget/cusstom_button.dart';
 import 'package:e_commerce/desh_board/features/add_product/dmain/entites/add_product_input_entity.dart';
@@ -10,10 +13,12 @@ class AddProductButton extends StatelessWidget {
     super.key,
     required this.isChecked,
     required this.isOrganic,
+    required this.image,
   });
 
   final bool isChecked;
   final bool isOrganic;
+  final File? image;
 
   @override
   Widget build(BuildContext context) {
@@ -23,39 +28,41 @@ class AddProductButton extends StatelessWidget {
         buttonText: 'Add Item',
         textStyle: AppTextStyles.bodyBasaBold16,
         onPressed: () {
-          // if (image != null) {
-          if (context
-              .read<AddProductCubit>()
-              .formState
-              .currentState!
-              .validate()) {
-            context.read<AddProductCubit>().formState.currentState!.save();
-            // ignore: unused_local_variable
-            ProductEntity input = ProductEntity(
-              name: context.read<AddProductCubit>().nameContoller.text,
-              price: num.parse(
-                  context.read<AddProductCubit>().priceContoller.text),
-              description: context.read<AddProductCubit>().desContoller.text,
-              code: context.read<AddProductCubit>().codeContoller.text,
-              // image: image!,
-              isFeatured: isChecked,
-              isOrganic: isOrganic,
-              expirationMonths: int.parse(
-                  context.read<AddProductCubit>().expirationContoller.text),
-              numberOfCalories: int.parse(
-                  context.read<AddProductCubit>().numCaloriesContoller.text),
-              unitAmount: int.parse(
-                  context.read<AddProductCubit>().unitAmountContoller.text),
-              reviews: [],
+          log('Image: $image');
+          if (image != null) {
+            if (context
+                .read<AddProductCubit>()
+                .formState
+                .currentState!
+                .validate()) {
+              context.read<AddProductCubit>().formState.currentState!.save();
+              // ignore: unused_local_variable
+              ProductEntity input = ProductEntity(
+                name: context.read<AddProductCubit>().nameContoller.text,
+                price: num.parse(
+                    context.read<AddProductCubit>().priceContoller.text),
+                description: context.read<AddProductCubit>().desContoller.text,
+                code: context.read<AddProductCubit>().codeContoller.text,
+                // image: image!,
+                isFeatured: isChecked,
+                isOrganic: isOrganic,
+                expirationMonths: int.parse(
+                    context.read<AddProductCubit>().expirationContoller.text),
+                numberOfCalories: int.parse(
+                    context.read<AddProductCubit>().numCaloriesContoller.text),
+                unitAmount: int.parse(
+                    context.read<AddProductCubit>().unitAmountContoller.text),
+                reviews: [],
+                image: image!,
+                imageUrl: image
+              );
+              context.read<AddProductCubit>().addProduct(input);
+            }
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Please select an image')),
             );
-            context.read<AddProductCubit>().addProduct(input);
           }
-          // } else {
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     const SnackBar(
-          //         content: Text('Please select an image')),
-          //   );
-          // }
         },
       ),
     );
