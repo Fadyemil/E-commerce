@@ -2,6 +2,26 @@
 class Assets {
   Assets._();
 
+  /// Assets for imageAdminCategoriesDrawer
+  /// assets/images/admin/categories_drawer.png
+  static const String imageAdminCategoriesDrawer =
+      "assets/images/admin/categories_drawer.png";
+
+  /// Assets for imageAdminDrawerImage
+  /// assets/images/admin/drawer_image.png
+  static const String imageAdminDrawerImage =
+      "assets/images/admin/drawer_image.png";
+
+  /// Assets for imageAdminProductsDrawer
+  /// assets/images/admin/products_drawer.png
+  static const String imageAdminProductsDrawer =
+      "assets/images/admin/products_drawer.png";
+
+  /// Assets for imageAdminUsersDrawer
+  /// assets/images/admin/users_drawer.png
+  static const String imageAdminUsersDrawer =
+      "assets/images/admin/users_drawer.png";
+
   /// Assets for imageAppIcon2
   /// assets/images/app_icon_2.png
   static const String imageAppIcon2 = "assets/images/app_icon_2.png";
@@ -18,6 +38,64 @@ class Assets {
   /// Assets for imageCheck
   /// assets/images/Check.svg
   static const String imageCheck = "assets/images/Check.svg";
+
+  /// Assets for imageCoreDarkTestImage
+  /// assets/images/core/dark_test_image.png
+  static const String imageCoreDarkTestImage =
+      "assets/images/core/dark_test_image.png";
+
+  /// Assets for imageCoreEmptyScreen
+  /// assets/images/core/empty_screen.png
+  static const String imageCoreEmptyScreen =
+      "assets/images/core/empty_screen.png";
+
+  /// Assets for imageCoreLightTestImage
+  /// assets/images/core/light_test_image.png
+  static const String imageCoreLightTestImage =
+      "assets/images/core/light_test_image.png";
+
+  /// Assets for imageCoreNoNetwork
+  /// assets/images/core/no_network.jpg
+  static const String imageCoreNoNetwork = "assets/images/core/no_network.jpg";
+
+  /// Assets for imageCorePageUnderBuild
+  /// assets/images/core/page_under_build.jpg
+  static const String imageCorePageUnderBuild =
+      "assets/images/core/page_under_build.jpg";
+
+  /// Assets for imageCoreSplashAndroid12
+  /// assets/images/core/splash_android_12.png
+  static const String imageCoreSplashAndroid12 =
+      "assets/images/core/splash_android_12.png";
+
+  /// Assets for imageCoreSplashIosAndroid11
+  /// assets/images/core/splash_ios_android_11.png
+  static const String imageCoreSplashIosAndroid11 =
+      "assets/images/core/splash_ios_android_11.png";
+
+  /// Assets for imageCustomerBigNavBarDark
+  /// assets/images/customer/big_nav_bar_dark.png
+  static const String imageCustomerBigNavBarDark =
+      "assets/images/customer/big_nav_bar_dark.png";
+
+  /// Assets for imageCustomerBigNavBarLight
+  /// assets/images/customer/big_nav_bar_light.png
+  static const String imageCustomerBigNavBarLight =
+      "assets/images/customer/big_nav_bar_light.png";
+
+  /// Assets for imageCustomerHomeBgDark
+  /// assets/images/customer/home_bg_dark.png
+  static const String imageCustomerHomeBgDark =
+      "assets/images/customer/home_bg_dark.png";
+
+  /// Assets for imageCustomerHomeBgLight
+  /// assets/images/customer/home_bg_light.png
+  static const String imageCustomerHomeBgLight =
+      "assets/images/customer/home_bg_light.png";
+
+  /// Assets for imageCustomerUser
+  /// assets/images/customer/user.png
+  static const String imageCustomerUser = "assets/images/customer/user.png";
 
   /// Assets for imageEmptyScreen
   /// assets/images/empty_screen.png
@@ -48,6 +126,11 @@ class Assets {
   /// Assets for imageGoogleIcon
   /// assets/images/google_icon.svg
   static const String imageGoogleIcon = "assets/images/google_icon.svg";
+
+  /// Assets for imageIconAppECommerce
+  /// assets/images/icon_app_e_commerce.png
+  static const String imageIconAppECommerce =
+      "assets/images/icon_app_e_commerce.png";
 
   /// Assets for imageLogo
   /// assets/images/logo.svg
@@ -157,4 +240,57 @@ class Assets {
   /// Assets for imageWatermelonTest
   /// assets/images/watermelon_test.png
   static const String imageWatermelonTest = "assets/images/watermelon_test.png";
+
+  /// Assets for svgArrowBack
+  /// assets/svg/arrow_back.svg
+  static const String svgArrowBack = "assets/svg/arrow_back.svg";
+
+  /// Assets for svgBuildDeveloper
+  /// assets/svg/build_developer.svg
+  static const String svgBuildDeveloper = "assets/svg/build_developer.svg";
+
+  /// Assets for svgBuildVersion
+  /// assets/svg/build_version.svg
+  static const String svgBuildVersion = "assets/svg/build_version.svg";
+
+  /// Assets for svgCarShop
+  /// assets/svg/car_shop.svg
+  static const String svgCarShop = "assets/svg/car_shop.svg";
+
+  /// Assets for svgCategoriesTapIcon
+  /// assets/svg/categories_tap_icon.svg
+  static const String svgCategoriesTapIcon =
+      "assets/svg/categories_tap_icon.svg";
+
+  /// Assets for svgDarkMode
+  /// assets/svg/dark_mode.svg
+  static const String svgDarkMode = "assets/svg/dark_mode.svg";
+
+  /// Assets for svgFavouriteTabIcon
+  /// assets/svg/favourite_tab_icon.svg
+  static const String svgFavouriteTabIcon = "assets/svg/favourite_tab_icon.svg";
+
+  /// Assets for svgHomeTabIcon
+  /// assets/svg/home_tab_icon.svg
+  static const String svgHomeTabIcon = "assets/svg/home_tab_icon.svg";
+
+  /// Assets for svgLanguage
+  /// assets/svg/language.svg
+  static const String svgLanguage = "assets/svg/language.svg";
+
+  /// Assets for svgLogout
+  /// assets/svg/logout.svg
+  static const String svgLogout = "assets/svg/logout.svg";
+
+  /// Assets for svgPlayStore512
+  /// assets/svg/play_store_512.png
+  static const String svgPlayStore512 = "assets/svg/play_store_512.png";
+
+  /// Assets for svgProfileTabIcon
+  /// assets/svg/profile_tab_icon.svg
+  static const String svgProfileTabIcon = "assets/svg/profile_tab_icon.svg";
+
+  /// Assets for svgSearch
+  /// assets/svg/search.svg
+  static const String svgSearch = "assets/svg/search.svg";
 }

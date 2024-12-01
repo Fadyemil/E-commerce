@@ -52,3 +52,21 @@ class AppColors {
   static const Color green1_900 = Color(0xFF0E2817);
   static const Color green1_950 = Color(0xFF06140C);
 }
+
+class ColorsDark {
+  static const Color mainColor = Color(0xFF242C3B);
+  static const Color blueLight = Color(0xFF37B6E9);
+  static const Color blueDark = Color(0xFF4B4CED);
+  static const Color navBarDark = Color(0xff2b3361);
+  static const Color white = Color(0xFFffffff);
+  static const Color black1 = Color(0xff353F54);
+  static const Color black2 = Color(0xff222834);
+}
+
+class ColorsLight {
+  static const Color mainColor = Color(0xffFFFFFF);
+  static const Color pinkLight = Color(0xFFEE637A);
+  static const Color pinkDark = Color(0xFF99162B);
+  static const Color black = Color(0xff170605);
+  static const Color white = Color(0xffFFFFFF);
+}
