@@ -21,5 +21,62 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "app_name": MessageLookupByLibrary.simpleMessage("Asroo Store"),
+        "application_features":
+            MessageLookupByLibrary.simpleMessage("Application Features"),
+        "build_developer":
+            MessageLookupByLibrary.simpleMessage("Build Developer"),
+        "build_version": MessageLookupByLibrary.simpleMessage("Build Version"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "change_to_the_language": MessageLookupByLibrary.simpleMessage(
+            "Do you want to confirm the language change to Arabic?"),
+        "choose_products":
+            MessageLookupByLibrary.simpleMessage("Choose Your Products"),
+        "create_account":
+            MessageLookupByLibrary.simpleMessage("Create account"),
+        "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "image_removed":
+            MessageLookupByLibrary.simpleMessage("The image has been Deleted."),
+        "image_uploaded": MessageLookupByLibrary.simpleMessage(
+            "The image has been uploaded successfully."),
+        "lang_code": MessageLookupByLibrary.simpleMessage("English"),
+        "language": MessageLookupByLibrary.simpleMessage("العربية"),
+        "language_tilte": MessageLookupByLibrary.simpleMessage("Language"),
+        "log_out": MessageLookupByLibrary.simpleMessage("Logout"),
+        "log_out_from_app":
+            MessageLookupByLibrary.simpleMessage("Do you want log out?"),
+        "logged_error": MessageLookupByLibrary.simpleMessage(
+            "There was an error logging in. Try again"),
+        "logged_successfully": MessageLookupByLibrary.simpleMessage(
+            "You have been logged in successfully"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "sign_up_welcome": MessageLookupByLibrary.simpleMessage(
+            "Welcome, Please add your information"),
+        "subscribed_to_notifications": MessageLookupByLibrary.simpleMessage(
+            "Notifications have been subscribed"),
+        "sure": MessageLookupByLibrary.simpleMessage("Sure"),
+        "unsubscribed_to_notifications": MessageLookupByLibrary.simpleMessage(
+            "Notifications have been unsubscribed"),
+        "valid_email":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "valid_name":
+            MessageLookupByLibrary.simpleMessage("Please enter your full name"),
+        "valid_passwrod": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid password, not less than 6 characters"),
+        "valid_pick_image": MessageLookupByLibrary.simpleMessage(
+            "Please Select Your Image Avatar"),
+        "view_all": MessageLookupByLibrary.simpleMessage("View all"),
+        "welcome": MessageLookupByLibrary.simpleMessage(
+            "Welcome, Please enter your email and get started."),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "you_have_account":
+            MessageLookupByLibrary.simpleMessage("You have an account?"),
+        "your_email": MessageLookupByLibrary.simpleMessage("Your Email")
+      };
 }
